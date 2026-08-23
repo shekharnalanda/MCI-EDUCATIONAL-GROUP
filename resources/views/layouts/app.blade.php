@@ -42,7 +42,7 @@
                 <li class="nav-item"><a class="nav-link" href="{{ route('about') }}">About</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('institutions') }}">Institutions</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('programs') }}">Programs</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('news') }}">News & Events</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('news-events') }}">News & Events</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('gallery') }}">Gallery</a></li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('contact') }}">Contact</a></li>
             </ul>
