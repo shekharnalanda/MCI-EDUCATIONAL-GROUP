@@ -32,9 +32,24 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::delete('/institutions/{institution}', [InstitutionController::class, 'destroy'])->name('institutions.destroy');
 
         Route::get('/news', [ContentController::class, 'news'])->name('news.index');
+        Route::post('/news', [ContentController::class, 'storeNews'])->name('news.store');
+        Route::put('/news/{newsPost}', [ContentController::class, 'updateNews'])->name('news.update');
+        Route::delete('/news/{newsPost}', [ContentController::class, 'deleteNews'])->name('news.destroy');
+
         Route::get('/gallery', [ContentController::class, 'gallery'])->name('gallery.index');
+        Route::post('/gallery', [ContentController::class, 'storeGallery'])->name('gallery.store');
+        Route::put('/gallery/{galleryItem}', [ContentController::class, 'updateGallery'])->name('gallery.update');
+        Route::delete('/gallery/{galleryItem}', [ContentController::class, 'deleteGallery'])->name('gallery.destroy');
+
         Route::get('/downloads', [ContentController::class, 'downloads'])->name('downloads.index');
+        Route::post('/downloads', [ContentController::class, 'storeDownload'])->name('downloads.store');
+        Route::put('/downloads/{download}', [ContentController::class, 'updateDownload'])->name('downloads.update');
+        Route::delete('/downloads/{download}', [ContentController::class, 'deleteDownload'])->name('downloads.destroy');
+
         Route::get('/enquiries', [ContentController::class, 'enquiries'])->name('enquiries.index');
+        Route::patch('/enquiries/{enquiry}', [ContentController::class, 'updateEnquiry'])->name('enquiries.update');
+        Route::delete('/enquiries/{enquiry}', [ContentController::class, 'deleteEnquiry'])->name('enquiries.destroy');
+
         Route::get('/settings', [ContentController::class, 'settings'])->name('settings.index');
         Route::put('/settings', [ContentController::class, 'saveSettings'])->name('settings.update');
     });
