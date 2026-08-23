@@ -3,8 +3,22 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', 'MCI Educational Group')</title>
-    <meta name="description" content="@yield('meta_description', 'MCI Educational Group - An Institution With Global Reach')">
+    @php
+        $seoTitle = trim($__env->yieldContent('title', 'MCI Educational Group'));
+        $seoDescription = trim($__env->yieldContent('meta_description', 'MCI Educational Group - An Institution With Global Reach'));
+        $canonicalUrl = url()->current();
+    @endphp
+    <title>{{ $seoTitle }}</title>
+    <meta name="description" content="{{ $seoDescription }}">
+    <link rel="canonical" href="{{ $canonicalUrl }}">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MCI Educational Group">
+    <meta property="og:title" content="{{ $seoTitle }}">
+    <meta property="og:description" content="{{ $seoDescription }}">
+    <meta property="og:url" content="{{ $canonicalUrl }}">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ $seoTitle }}">
+    <meta name="twitter:description" content="{{ $seoDescription }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root{--mci-blue:#0d4fa3;--mci-green:#1aa260;--mci-dark:#0d2540;--mci-light:#f4f8fc}
