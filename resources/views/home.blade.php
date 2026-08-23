@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root{--mci-blue:#0d5ea6;--mci-green:#159447;--mci-dark:#0b2440;--mci-light:#f5f9fc;--mci-gold:#e9b84a}
-        body{font-family:Arial,Helvetica,sans-serif;color:#22313f;background:#fff}.topbar{background:var(--mci-dark);color:#fff;font-size:.92rem}.brand-title{font-weight:800;letter-spacing:.3px;color:var(--mci-dark)}.brand-sub{font-size:.85rem;color:#607080}.navbar{box-shadow:0 6px 24px rgba(10,44,77,.08)}.nav-link{font-weight:600;color:#31465a!important}.hero{min-height:76vh;display:flex;align-items:center;background:linear-gradient(115deg,rgba(7,50,92,.94),rgba(13,94,166,.86) 52%,rgba(21,148,71,.78)),url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;color:#fff}.hero h1{font-size:clamp(2.5rem,5vw,5rem);font-weight:900;line-height:1.02}.hero .lead{font-size:1.2rem;max-width:760px}.eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.24);padding:.5rem .9rem;border-radius:999px;font-weight:700}.btn-mci{background:var(--mci-green);border:none;color:#fff;font-weight:700;padding:.8rem 1.2rem}.btn-mci:hover{background:#117a3c;color:#fff}.btn-outline-light{font-weight:700;padding:.8rem 1.2rem}.section{padding:82px 0}.section-soft{background:var(--mci-light)}.section-title{font-weight:900;color:var(--mci-dark)}.section-kicker{color:var(--mci-green);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.82rem}.institution-card{border:0;border-radius:20px;box-shadow:0 16px 42px rgba(15,56,92,.09);height:100%;transition:.25s}.institution-card:hover{transform:translateY(-6px);box-shadow:0 22px 55px rgba(15,56,92,.14)}.institution-card .icon{width:58px;height:58px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(135deg,var(--mci-blue),var(--mci-green));color:#fff;font-size:1.4rem;font-weight:900}.feature-box{border-radius:18px;padding:26px;background:#fff;box-shadow:0 12px 32px rgba(20,60,90,.07);height:100%}.stat{font-size:2rem;font-weight:900;color:var(--mci-blue)}.cta{background:linear-gradient(120deg,var(--mci-blue),var(--mci-green));color:#fff;border-radius:26px;padding:42px}.footer{background:#071d31;color:#c8d6e3;padding:56px 0 24px}.footer h5{color:#fff;font-weight:800}.footer a{color:#c8d6e3;text-decoration:none}.footer a:hover{color:#fff}.trust-strip{background:#eef7f2;border-top:1px solid #deeee4;border-bottom:1px solid #deeee4;color:#245039;font-weight:700}.small-muted{color:#6d7c89}.brand-mark{width:62px;height:62px;border-radius:18px;background:linear-gradient(135deg,var(--mci-blue),var(--mci-green));display:grid;place-items:center;color:white;font-size:1.55rem;font-weight:900;box-shadow:0 10px 24px rgba(13,94,166,.2)}
+        body{font-family:Arial,Helvetica,sans-serif;color:#22313f;background:#fff}.topbar{background:var(--mci-dark);color:#fff;font-size:.92rem}.brand-title{font-weight:800;letter-spacing:.3px;color:var(--mci-dark)}.brand-sub{font-size:.85rem;color:#607080}.navbar{box-shadow:0 6px 24px rgba(10,44,77,.08)}.nav-link{font-weight:600;color:#31465a!important}.hero{min-height:76vh;display:flex;align-items:center;background:linear-gradient(115deg,rgba(7,50,92,.94),rgba(13,94,166,.86) 52%,rgba(21,148,71,.78)),url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;color:#fff}.hero h1{font-size:clamp(2.5rem,5vw,5rem);font-weight:900;line-height:1.02}.hero .lead{font-size:1.2rem;max-width:760px}.eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.24);padding:.5rem .9rem;border-radius:999px;font-weight:700}.btn-mci{background:var(--mci-green);border:none;color:#fff;font-weight:700;padding:.8rem 1.2rem}.btn-mci:hover{background:#117a3c;color:#fff}.btn-outline-light{font-weight:700;padding:.8rem 1.2rem}.section{padding:82px 0}.section-soft{background:var(--mci-light)}.section-title{font-weight:900;color:var(--mci-dark)}.section-kicker{color:var(--mci-green);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.82rem}.institution-card{border:0;border-radius:20px;box-shadow:0 16px 42px rgba(15,56,92,.09);height:100%;transition:.25s}.institution-card:hover{transform:translateY(-6px);box-shadow:0 22px 55px rgba(15,56,92,.14)}.institution-card .icon{width:58px;height:58px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(135deg,var(--mci-blue),var(--mci-green));color:#fff;font-size:1.1rem;font-weight:900}.feature-box{border-radius:18px;padding:26px;background:#fff;box-shadow:0 12px 32px rgba(20,60,90,.07);height:100%}.stat{font-size:2rem;font-weight:900;color:var(--mci-blue)}.cta{background:linear-gradient(120deg,var(--mci-blue),var(--mci-green));color:#fff;border-radius:26px;padding:42px}.footer{background:#071d31;color:#c8d6e3;padding:56px 0 24px}.footer h5{color:#fff;font-weight:800}.footer a{color:#c8d6e3;text-decoration:none}.footer a:hover{color:#fff}.trust-strip{background:#eef7f2;border-top:1px solid #deeee4;border-bottom:1px solid #deeee4;color:#245039;font-weight:700}.small-muted{color:#6d7c89}.brand-mark{width:62px;height:62px;border-radius:18px;background:linear-gradient(135deg,var(--mci-blue),var(--mci-green));display:grid;place-items:center;color:white;font-size:1.55rem;font-weight:900;box-shadow:0 10px 24px rgba(13,94,166,.2)}
     </style>
 </head>
 <body>
@@ -25,110 +25,30 @@
             <span><span class="brand-title d-block">MCI EDUCATIONAL GROUP</span><span class="brand-sub">An Institution With Global Reach</span></span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mciNav"><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="mciNav">
-            <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
-                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="/institutions">Institutions</a></li>
-                <li class="nav-item"><a class="nav-link" href="/programs">Programs</a></li>
-                <li class="nav-item"><a class="nav-link" href="/news-events">News &amp; Events</a></li>
-                <li class="nav-item"><a class="nav-link" href="/gallery">Gallery</a></li>
-                <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
-            </ul>
-        </div>
+        <div class="collapse navbar-collapse" id="mciNav"><ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+            <li class="nav-item"><a class="nav-link" href="/">Home</a></li><li class="nav-item"><a class="nav-link" href="/about">About</a></li><li class="nav-item"><a class="nav-link" href="/institutions">Institutions</a></li><li class="nav-item"><a class="nav-link" href="/programs">Programs</a></li><li class="nav-item"><a class="nav-link" href="/news-events">News &amp; Events</a></li><li class="nav-item"><a class="nav-link" href="/gallery">Gallery</a></li><li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+        </ul></div>
     </div>
 </nav>
-<section class="hero">
-    <div class="container py-5">
-        <div class="row align-items-center">
-            <div class="col-lg-8">
-                <div class="eyebrow mb-4">Serve the Education • Excellence Through Education</div>
-                <h1>MCI EDUCATIONAL GROUP</h1>
-                <p class="lead mt-4">A growing educational ecosystem committed to quality education, skill development, knowledge empowerment and future-ready opportunities for learners.</p>
-                <div class="d-flex flex-wrap gap-3 mt-4">
-                    <a href="/institutions" class="btn btn-mci btn-lg">Explore Our Institutions</a>
-                    <a href="/contact" class="btn btn-outline-light btn-lg">Contact Us</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+<section class="hero"><div class="container py-5"><div class="row align-items-center"><div class="col-lg-8"><div class="eyebrow mb-4">Serve the Education • Excellence Through Education</div><h1>MCI EDUCATIONAL GROUP</h1><p class="lead mt-4">A growing educational ecosystem committed to quality education, skill development, knowledge empowerment and future-ready opportunities for learners.</p><div class="d-flex flex-wrap gap-3 mt-4"><a href="/institutions" class="btn btn-mci btn-lg">Explore Our Institutions</a><a href="/contact" class="btn btn-outline-light btn-lg">Contact Us</a></div></div></div></div></section>
 <div class="trust-strip py-3 text-center">MCI CAMPUS, Quamruddin Ganj, Bihar Sharif, Nalanda - 803101, Bihar</div>
-<section class="section">
-    <div class="container">
-        <div class="row g-5 align-items-center">
-            <div class="col-lg-6">
-                <div class="section-kicker">About the Group</div>
-                <h2 class="section-title display-6 mt-2">Building a connected platform for education, skills and services.</h2>
-            </div>
-            <div class="col-lg-6">
-                <p class="fs-5 small-muted mb-0">MCI Educational Group brings together multiple education and service initiatives under one trusted umbrella. The group website is designed as the parent portal for present institutions and future projects, with centralised information, updates and links.</p>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="section section-soft">
-    <div class="container">
-        <div class="text-center mb-5">
-            <div class="section-kicker">Our Institutions</div>
-            <h2 class="section-title display-6">One group, multiple learning opportunities</h2>
-            <p class="small-muted">More institutions can be added in future through the admin panel.</p>
-        </div>
-        <div class="row g-4">
-            @php
-                $institutions = [
-                    ['name'=>'Micro Computer Institute','url'=>'https://mciedu.com','desc'=>'Computer education and career-oriented learning programs.','code'=>'MCI'],
-                    ['name'=>'C-Net Computer Institute','url'=>'https://cnetcomputer.mciedu.com','desc'=>'Computer education, training and student services.','code'=>'CN'],
-                    ['name'=>'C-Net Pathshala','url'=>'https://c-net.mciedu.in','desc'=>'Academic learning, student support and educational services.','code'=>'CP'],
-                    ['name'=>'C-Net Library','url'=>'https://cnetlibrary.mciedu.com','desc'=>'Modern library, study hall and learner support ecosystem.','code'=>'CL'],
-                    ['name'=>'C-Net Web Services','url'=>'https://web.mciedu.in','desc'=>'Website, domain, hosting and digital service solutions.','code'=>'CW'],
-                ];
-            @endphp
-            @foreach($institutions as $item)
-            <div class="col-md-6 col-xl-4">
-                <div class="card institution-card p-4">
-                    <div class="icon mb-4">{{ $item['code'] }}</div>
-                    <h4 class="fw-bold">{{ $item['name'] }}</h4>
-                    <p class="small-muted flex-grow-1">{{ $item['desc'] }}</p>
-                    <a class="btn btn-outline-primary align-self-start" href="{{ $item['url'] }}" target="_blank" rel="noopener">Visit Website</a>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-<section class="section">
-    <div class="container">
-        <div class="text-center mb-5">
-            <div class="section-kicker">Why MCI</div>
-            <h2 class="section-title display-6">Education with reach, relevance and responsibility</h2>
-        </div>
-        <div class="row g-4">
-            <div class="col-md-6 col-lg-3"><div class="feature-box"><div class="stat">01</div><h5 class="fw-bold mt-3">Quality Education</h5><p class="small-muted mb-0">Learning experiences focused on clarity, discipline and practical value.</p></div></div>
-            <div class="col-md-6 col-lg-3"><div class="feature-box"><div class="stat">02</div><h5 class="fw-bold mt-3">Skill Development</h5><p class="small-muted mb-0">Career-oriented skills for students, professionals and local communities.</p></div></div>
-            <div class="col-md-6 col-lg-3"><div class="feature-box"><div class="stat">03</div><h5 class="fw-bold mt-3">Digital Access</h5><p class="small-muted mb-0">Online resources, services and institution portals accessible from one group site.</p></div></div>
-            <div class="col-md-6 col-lg-3"><div class="feature-box"><div class="stat">04</div><h5 class="fw-bold mt-3">Future Growth</h5><p class="small-muted mb-0">A scalable platform ready for new institutions, programs and initiatives.</p></div></div>
-        </div>
-    </div>
-</section>
-<section class="section pt-0">
-    <div class="container">
-        <div class="cta d-lg-flex align-items-center justify-content-between gap-4">
-            <div><div class="text-uppercase fw-bold opacity-75 mb-2">Connect with MCI</div><h2 class="fw-bold mb-2">Looking for admission, training or institutional information?</h2><p class="mb-0 opacity-75">Contact MCI Educational Group and we will guide you to the right institution or service.</p></div>
-            <div class="mt-4 mt-lg-0"><a href="/contact" class="btn btn-light btn-lg fw-bold">Send Enquiry</a></div>
-        </div>
-    </div>
-</section>
-<footer class="footer">
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-lg-5"><h5>MCI EDUCATIONAL GROUP</h5><p>An Institution With Global Reach</p><p class="mb-1">Working under Chandrashekhar &amp; Narayan Educational Trust</p><p class="mb-0">MCI CAMPUS, Quamruddin Ganj, Bihar Sharif, Nalanda - 803101</p></div>
-            <div class="col-6 col-lg-3"><h5>Quick Links</h5><div class="d-grid gap-2"><a href="/about">About Us</a><a href="/institutions">Our Institutions</a><a href="/programs">Programs</a><a href="/news-events">News &amp; Events</a><a href="/gallery">Gallery</a></div></div>
-            <div class="col-6 col-lg-4"><h5>Contact</h5><p class="mb-1">7004773247</p><p class="mb-1">9334779133</p><p>mcieducationalgroup@gmail.com</p></div>
-        </div>
-        <hr class="border-secondary my-4"><div class="small">© {{ date('Y') }} MCI Educational Group. All rights reserved.</div>
-    </div>
-</footer>
+<section class="section"><div class="container"><div class="row g-5 align-items-center"><div class="col-lg-6"><div class="section-kicker">About the Group</div><h2 class="section-title display-6 mt-2">Building a connected platform for education, skills and services.</h2></div><div class="col-lg-6"><p class="fs-5 small-muted mb-0">MCI Educational Group brings together multiple education and service initiatives under one trusted umbrella. The group website is designed as the parent portal for present institutions and future projects, with centralised information, updates and links.</p></div></div></div></section>
+<section class="section section-soft"><div class="container"><div class="text-center mb-5"><div class="section-kicker">Our Institutions</div><h2 class="section-title display-6">One group, multiple learning opportunities</h2><p class="small-muted">Managed dynamically from the MCI admin panel.</p></div><div class="row g-4">
+@forelse($institutions as $item)
+<div class="col-md-6 col-xl-4"><div class="card institution-card p-4"><div class="icon mb-4">{{ strtoupper(substr($item->name,0,3)) }}</div><h4 class="fw-bold">{{ $item->name }}</h4><p class="small-muted flex-grow-1">{{ $item->short_description ?: $item->description }}</p>@if($item->website_url)<a class="btn btn-outline-primary align-self-start" href="{{ $item->website_url }}" target="_blank" rel="noopener">Visit Website</a>@endif</div></div>
+@empty
+<div class="col-12"><div class="alert alert-light border text-center">Institution information will be published soon.</div></div>
+@endforelse
+</div></div></section>
+@if($news->count())
+<section class="section"><div class="container"><div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-5"><div><div class="section-kicker">Latest Updates</div><h2 class="section-title display-6 mb-0">News & Events</h2></div><a href="/news-events" class="btn btn-outline-primary">View All</a></div><div class="row g-4">@foreach($news as $item)<div class="col-md-6 col-lg-4"><article class="card h-100 border-0 shadow-sm rounded-4"><div class="card-body p-4"><div class="small text-success fw-bold">{{ optional($item->published_at)->format('d M Y') ?: 'MCI Update' }}</div><h3 class="h5 fw-bold mt-2">{{ $item->title }}</h3><p class="small-muted mb-0">{{ $item->excerpt }}</p></div></article></div>@endforeach</div></div></section>
+@endif
+@if($gallery->count())
+<section class="section section-soft"><div class="container"><div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-5"><div><div class="section-kicker">Highlights</div><h2 class="section-title display-6 mb-0">Gallery</h2></div><a href="/gallery" class="btn btn-outline-primary">View Gallery</a></div><div class="row g-4">@foreach($gallery as $item)<div class="col-md-6 col-lg-4"><div class="card border-0 shadow-sm rounded-4 overflow-hidden h-100"><img src="{{ $item->image }}" alt="{{ $item->title }}" style="height:230px;object-fit:cover" class="w-100"><div class="card-body"><h3 class="h6 fw-bold mb-1">{{ $item->title }}</h3>@if($item->caption)<p class="small-muted mb-0">{{ $item->caption }}</p>@endif</div></div></div>@endforeach</div></div></section>
+@endif
+<section class="section"><div class="container"><div class="text-center mb-5"><div class="section-kicker">Why MCI</div><h2 class="section-title display-6">Education with reach, relevance and responsibility</h2></div><div class="row g-4"><div class="col-md-6 col-lg-3"><div class="feature-box"><div class="stat">01</div><h5 class="fw-bold mt-3">Quality Education</h5><p class="small-muted mb-0">Learning experiences focused on clarity, discipline and practical value.</p></div></div><div class="col-md-6 col-lg-3"><div class="feature-box"><div class="stat">02</div><h5 class="fw-bold mt-3">Skill Development</h5><p class="small-muted mb-0">Career-oriented skills for students, professionals and local communities.</p></div></div><div class="col-md-6 col-lg-3"><div class="feature-box"><div class="stat">03</div><h5 class="fw-bold mt-3">Digital Access</h5><p class="small-muted mb-0">Online resources, services and institution portals accessible from one group site.</p></div></div><div class="col-md-6 col-lg-3"><div class="feature-box"><div class="stat">04</div><h5 class="fw-bold mt-3">Future Growth</h5><p class="small-muted mb-0">A scalable platform ready for new institutions, programs and initiatives.</p></div></div></div></div></section>
+<section class="section pt-0"><div class="container"><div class="cta d-lg-flex align-items-center justify-content-between gap-4"><div><div class="text-uppercase fw-bold opacity-75 mb-2">Connect with MCI</div><h2 class="fw-bold mb-2">Looking for admission, training or institutional information?</h2><p class="mb-0 opacity-75">Contact MCI Educational Group and we will guide you to the right institution or service.</p></div><div class="mt-4 mt-lg-0"><a href="/contact" class="btn btn-light btn-lg fw-bold">Send Enquiry</a></div></div></div></section>
+<footer class="footer"><div class="container"><div class="row g-4"><div class="col-lg-5"><h5>MCI EDUCATIONAL GROUP</h5><p>An Institution With Global Reach</p><p class="mb-1">Working under Chandrashekhar &amp; Narayan Educational Trust</p><p class="mb-0">MCI CAMPUS, Quamruddin Ganj, Bihar Sharif, Nalanda - 803101</p></div><div class="col-6 col-lg-3"><h5>Quick Links</h5><div class="d-grid gap-2"><a href="/about">About Us</a><a href="/institutions">Our Institutions</a><a href="/programs">Programs</a><a href="/news-events">News &amp; Events</a><a href="/gallery">Gallery</a></div></div><div class="col-6 col-lg-4"><h5>Contact</h5><p class="mb-1">7004773247</p><p class="mb-1">9334779133</p><p>mcieducationalgroup@gmail.com</p></div></div><hr class="border-secondary my-4"><div class="small">© {{ date('Y') }} MCI Educational Group. All rights reserved.</div></div></footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
