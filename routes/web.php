@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\ContentController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\InstitutionController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home')->name('home');
@@ -12,3 +15,19 @@ Route::view('/gallery', 'pages.gallery')->name('gallery');
 Route::view('/downloads', 'pages.downloads')->name('downloads');
 Route::view('/career', 'pages.career')->name('career');
 Route::view('/contact', 'pages.contact')->name('contact');
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/institutions', [InstitutionController::class, 'index'])->name('institutions.index');
+    Route::post('/institutions', [InstitutionController::class, 'store'])->name('institutions.store');
+    Route::put('/institutions/{institution}', [InstitutionController::class, 'update'])->name('institutions.update');
+    Route::delete('/institutions/{institution}', [InstitutionController::class, 'destroy'])->name('institutions.destroy');
+
+    Route::get('/news', [ContentController::class, 'news'])->name('news.index');
+    Route::get('/gallery', [ContentController::class, 'gallery'])->name('gallery.index');
+    Route::get('/downloads', [ContentController::class, 'downloads'])->name('downloads.index');
+    Route::get('/enquiries', [ContentController::class, 'enquiries'])->name('enquiries.index');
+    Route::get('/settings', [ContentController::class, 'settings'])->name('settings.index');
+    Route::put('/settings', [ContentController::class, 'saveSettings'])->name('settings.update');
+});
