@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MCI Educational Group</title>
     <meta name="description" content="MCI Educational Group - An Institution With Global Reach, working under Chandrashekhar & Narayan Educational Trust.">
+    <link rel="canonical" href="https://mciedu.in/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="MCI Educational Group">
+    <meta property="og:title" content="MCI Educational Group">
+    <meta property="og:description" content="MCI Educational Group - An Institution With Global Reach, working under Chandrashekhar & Narayan Educational Trust.">
+    <meta property="og:url" content="https://mciedu.in/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="MCI Educational Group">
+    <meta name="twitter:description" content="MCI Educational Group - An Institution With Global Reach, working under Chandrashekhar & Narayan Educational Trust.">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root{--mci-blue:#0d5ea6;--mci-green:#159447;--mci-dark:#0b2440;--mci-light:#f5f9fc;--mci-gold:#e9b84a}
