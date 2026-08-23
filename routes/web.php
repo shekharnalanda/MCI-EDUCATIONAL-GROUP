@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InstitutionController;
+use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\PublicSiteController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,7 @@ Route::get('/gallery', [PublicSiteController::class, 'gallery'])->name('gallery'
 Route::get('/downloads', [PublicSiteController::class, 'downloads'])->name('downloads');
 Route::view('/career', 'pages.career')->name('career');
 Route::view('/contact', 'pages.contact')->name('contact');
+Route::post('/enquiry', [EnquiryController::class, 'store'])->middleware('throttle:10,1')->name('enquiry.store');
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware('guest')->group(function () {
