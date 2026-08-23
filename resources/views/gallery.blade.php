@@ -13,7 +13,7 @@
 <section class="py-5">
     <div class="container">
         <div class="row g-4">
-            @forelse($gallery as $item)
+            @forelse($items as $item)
                 <div class="col-md-6 col-lg-4">
                     <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
                         <img src="{{ $item->image }}" alt="{{ $item->title }}" class="card-img-top" style="height:240px;object-fit:cover">
