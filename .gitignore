@@ -3,6 +3,8 @@
 /public/build/
 /public/hot
 /public/storage
+/public/.user.ini
+/public/php.ini
 /storage/*.key
 /storage/logs/*
 /storage/framework/cache/data/*
