@@ -1,12 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InstitutionController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home')->name('home');
-
 Route::view('/about', 'pages.about')->name('about');
 Route::view('/institutions', 'pages.institutions')->name('institutions');
 Route::view('/programs', 'pages.programs')->name('programs');
@@ -17,17 +17,25 @@ Route::view('/career', 'pages.career')->name('career');
 Route::view('/contact', 'pages.contact')->name('contact');
 
 Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::middleware('guest')->group(function () {
+        Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+        Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:5,1')->name('login.submit');
+    });
 
-    Route::get('/institutions', [InstitutionController::class, 'index'])->name('institutions.index');
-    Route::post('/institutions', [InstitutionController::class, 'store'])->name('institutions.store');
-    Route::put('/institutions/{institution}', [InstitutionController::class, 'update'])->name('institutions.update');
-    Route::delete('/institutions/{institution}', [InstitutionController::class, 'destroy'])->name('institutions.destroy');
+    Route::middleware('auth')->group(function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    Route::get('/news', [ContentController::class, 'news'])->name('news.index');
-    Route::get('/gallery', [ContentController::class, 'gallery'])->name('gallery.index');
-    Route::get('/downloads', [ContentController::class, 'downloads'])->name('downloads.index');
-    Route::get('/enquiries', [ContentController::class, 'enquiries'])->name('enquiries.index');
-    Route::get('/settings', [ContentController::class, 'settings'])->name('settings.index');
-    Route::put('/settings', [ContentController::class, 'saveSettings'])->name('settings.update');
+        Route::get('/institutions', [InstitutionController::class, 'index'])->name('institutions.index');
+        Route::post('/institutions', [InstitutionController::class, 'store'])->name('institutions.store');
+        Route::put('/institutions/{institution}', [InstitutionController::class, 'update'])->name('institutions.update');
+        Route::delete('/institutions/{institution}', [InstitutionController::class, 'destroy'])->name('institutions.destroy');
+
+        Route::get('/news', [ContentController::class, 'news'])->name('news.index');
+        Route::get('/gallery', [ContentController::class, 'gallery'])->name('gallery.index');
+        Route::get('/downloads', [ContentController::class, 'downloads'])->name('downloads.index');
+        Route::get('/enquiries', [ContentController::class, 'enquiries'])->name('enquiries.index');
+        Route::get('/settings', [ContentController::class, 'settings'])->name('settings.index');
+        Route::put('/settings', [ContentController::class, 'saveSettings'])->name('settings.update');
+    });
 });
