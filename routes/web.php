@@ -9,14 +9,14 @@ use App\Http\Controllers\PublicSiteController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PublicSiteController::class, 'home'])->name('home');
-Route::view('/about', 'pages.about')->name('about');
+Route::view('/about', 'about')->name('about');
 Route::get('/institutions', [PublicSiteController::class, 'institutions'])->name('institutions');
-Route::view('/programs', 'pages.programs')->name('programs');
+Route::view('/programs', 'programs')->name('programs');
 Route::get('/news-events', [PublicSiteController::class, 'news'])->name('news-events');
 Route::get('/gallery', [PublicSiteController::class, 'gallery'])->name('gallery');
 Route::get('/downloads', [PublicSiteController::class, 'downloads'])->name('downloads');
-Route::view('/career', 'pages.career')->name('career');
-Route::view('/contact', 'pages.contact')->name('contact');
+Route::view('/career', 'career')->name('career');
+Route::view('/contact', 'contact')->name('contact');
 Route::post('/enquiry', [EnquiryController::class, 'store'])->middleware('throttle:10,1')->name('enquiry.store');
 
 Route::prefix('admin')->name('admin.')->group(function () {
