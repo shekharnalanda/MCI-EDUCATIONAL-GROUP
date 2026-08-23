@@ -13,7 +13,7 @@
 <section class="py-5">
     <div class="container">
         <div class="row g-4">
-            @forelse($news as $item)
+            @forelse($items as $item)
                 <div class="col-md-6 col-lg-4">
                     <article class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
                         @if($item->image)
