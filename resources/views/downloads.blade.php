@@ -13,7 +13,7 @@
 <section class="py-5">
     <div class="container">
         <div class="row g-4">
-            @forelse($downloads as $item)
+            @forelse($items as $item)
                 <div class="col-md-6">
                     <div class="card h-100 border-0 shadow-sm rounded-4">
                         <div class="card-body p-4 d-flex flex-column">
