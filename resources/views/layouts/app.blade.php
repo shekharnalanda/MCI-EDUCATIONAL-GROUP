@@ -7,18 +7,23 @@
         $seoTitle = trim($__env->yieldContent('title', 'MCI Educational Group'));
         $seoDescription = trim($__env->yieldContent('meta_description', 'MCI Educational Group - An Institution With Global Reach'));
         $canonicalUrl = url()->current();
+        $logoUrl = asset('images/mci-logo.png');
     @endphp
     <title>{{ $seoTitle }}</title>
     <meta name="description" content="{{ $seoDescription }}">
     <link rel="canonical" href="{{ $canonicalUrl }}">
+    <link rel="icon" type="image/png" href="{{ $logoUrl }}">
+    <link rel="apple-touch-icon" href="{{ $logoUrl }}">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="MCI Educational Group">
     <meta property="og:title" content="{{ $seoTitle }}">
     <meta property="og:description" content="{{ $seoDescription }}">
     <meta property="og:url" content="{{ $canonicalUrl }}">
+    <meta property="og:image" content="{{ $logoUrl }}">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="{{ $seoTitle }}">
     <meta name="twitter:description" content="{{ $seoDescription }}">
+    <meta name="twitter:image" content="{{ $logoUrl }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root{--mci-blue:#0d4fa3;--mci-green:#1aa260;--mci-dark:#0d2540;--mci-light:#f4f8fc}
@@ -26,6 +31,9 @@
         .topbar{background:var(--mci-dark);color:#fff;font-size:.9rem}
         .topbar a{color:#fff;text-decoration:none}
         .navbar-brand{font-weight:800;color:var(--mci-blue)!important}
+        .brand-logo{width:58px;height:58px;object-fit:contain;flex:0 0 58px}
+        .brand-copy{line-height:1.08}.brand-copy small{display:block;font-size:.72rem;font-weight:600;color:#607080;margin-top:4px}
+        .footer-logo{width:82px;height:82px;object-fit:contain;background:#fff;border-radius:16px;padding:5px;margin-bottom:14px}
         .navbar .nav-link{font-weight:600;color:#21364f}
         .navbar .nav-link:hover{color:var(--mci-green)}
         .page-hero{background:linear-gradient(120deg,rgba(13,79,163,.96),rgba(26,162,96,.88));color:#fff;padding:80px 0}
@@ -36,6 +44,7 @@
         .btn-mci:hover{color:#fff;opacity:.95}
         footer{background:#0d2540;color:#d9e4ef}
         footer a{color:#d9e4ef;text-decoration:none}
+        @media (max-width:575.98px){.brand-logo{width:46px;height:46px;flex-basis:46px}.brand-copy{font-size:.9rem}.brand-copy small{font-size:.62rem}}
     </style>
     @stack('styles')
 </head>
@@ -48,7 +57,10 @@
 </div>
 <nav class="navbar navbar-expand-lg bg-white sticky-top shadow-sm">
     <div class="container">
-        <a class="navbar-brand" href="{{ route('home') }}">MCI EDUCATIONAL GROUP</a>
+        <a class="navbar-brand d-flex align-items-center gap-2" href="{{ route('home') }}">
+            <img src="{{ $logoUrl }}" alt="MCI Educational Group logo" class="brand-logo">
+            <span class="brand-copy">MCI EDUCATIONAL GROUP<small>An Institution With Global Reach</small></span>
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mciNav"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="mciNav">
             <ul class="navbar-nav ms-auto align-items-lg-center">
@@ -70,6 +82,7 @@
     <div class="container">
         <div class="row g-4">
             <div class="col-md-5">
+                <img src="{{ $logoUrl }}" alt="MCI Educational Group logo" class="footer-logo">
                 <h5 class="text-white">MCI Educational Group</h5>
                 <p>MCI CAMPUS, Quamruddin Ganj, Bihar Sharif, Nalanda - 803101, Bihar (India)</p>
             </div>
