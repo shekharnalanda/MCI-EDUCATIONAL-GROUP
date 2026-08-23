@@ -1,10 +1,11 @@
 ---
 deployment:
   tasks:
-    - /bin/mkdir -p /home4/mcied45x/repositories/MCI-EDUCATIONAL-GROUP/storage/framework/cache/data /home4/mcied45x/repositories/MCI-EDUCATIONAL-GROUP/storage/framework/sessions /home4/mcied45x/repositories/MCI-EDUCATIONAL-GROUP/storage/framework/views /home4/mcied45x/repositories/MCI-EDUCATIONAL-GROUP/storage/logs /home4/mcied45x/repositories/MCI-EDUCATIONAL-GROUP/bootstrap/cache
+    - /bin/mkdir -p /home4/mcied45x/repositories/MCI-EDUCATIONAL-GROUP/storage/framework/cache/data /home4/mcied45x/repositories/MCI-EDUCATIONAL-GROUP/storage/framework/sessions /home4/mcied45x/repositories/MCI-EDUCATIONAL-GROUP/storage/framework/views /home4/mcied45x/repositories/MCI-EDUCATIONAL-GROUP/storage/logs /home4/mcied45x/repositories/MCI-EDUCATIONAL-GROUP/bootstrap/cache /home4/mcied45x/repositories/MCI-EDUCATIONAL-GROUP/storage/app/public
     - /bin/chmod -R ug+rwX /home4/mcied45x/repositories/MCI-EDUCATIONAL-GROUP/storage /home4/mcied45x/repositories/MCI-EDUCATIONAL-GROUP/bootstrap/cache
     - /opt/cpanel/ea-php83/root/usr/bin/php /home4/mcied45x/repositories/MCI-EDUCATIONAL-GROUP/artisan optimize:clear
-    - /opt/cpanel/ea-php83/root/usr/bin/php /home4/mcied45x/repositories/MCI-EDUCATIONAL-GROUP/artisan migrate --seed --force
+    - /opt/cpanel/ea-php83/root/usr/bin/php /home4/mcied45x/repositories/MCI-EDUCATIONAL-GROUP/artisan migrate --force
     - /opt/cpanel/ea-php83/root/usr/bin/php /home4/mcied45x/repositories/MCI-EDUCATIONAL-GROUP/artisan config:cache
     - /opt/cpanel/ea-php83/root/usr/bin/php /home4/mcied45x/repositories/MCI-EDUCATIONAL-GROUP/artisan route:cache
     - /opt/cpanel/ea-php83/root/usr/bin/php /home4/mcied45x/repositories/MCI-EDUCATIONAL-GROUP/artisan view:cache
+    - /opt/cpanel/ea-php83/root/usr/bin/php /home4/mcied45x/repositories/MCI-EDUCATIONAL-GROUP/artisan about
