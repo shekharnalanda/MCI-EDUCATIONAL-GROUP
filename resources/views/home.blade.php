@@ -48,7 +48,11 @@
 <section class="section"><div class="container"><div class="row g-5 align-items-center"><div class="col-lg-6"><div class="section-kicker">About the Group</div><h2 class="section-title display-6 mt-2">Building a connected platform for education, skills and services.</h2></div><div class="col-lg-6"><p class="fs-5 small-muted mb-0">MCI Educational Group brings together multiple education and service initiatives under one trusted umbrella. The group website is designed as the parent portal for present institutions and future projects, with centralised information, updates and links.</p></div></div></div></section>
 <section class="section section-soft"><div class="container"><div class="text-center mb-5"><div class="section-kicker">Our Institutions</div><h2 class="section-title display-6">One group, multiple learning opportunities</h2><p class="small-muted">Managed dynamically from the MCI admin panel.</p></div><div class="row g-4">
 @forelse($institutions as $item)
-<div class="col-md-6 col-xl-4"><div class="card institution-card p-4"><div class="icon mb-4">{{ strtoupper(substr($item->name,0,3)) }}</div><h4 class="fw-bold">{{ $item->name }}</h4><p class="small-muted flex-grow-1">{{ $item->short_description ?: $item->description }}</p>@if($item->website_url)<a class="btn btn-outline-primary align-self-start" href="{{ $item->website_url }}" target="_blank" rel="noopener">Visit Website</a>@endif</div></div>
+@php
+    $words = preg_split('/\s+/', trim($item->name));
+    $institutionCode = strtoupper(collect($words)->filter()->map(fn($word) => substr($word, 0, 1))->implode(''));
+@endphp
+<div class="col-md-6 col-xl-4"><div class="card institution-card p-4"><div class="icon mb-4">{{ $institutionCode }}</div><h4 class="fw-bold">{{ $item->name }}</h4><p class="small-muted flex-grow-1">{{ $item->short_description ?: $item->description }}</p>@if($item->website_url)<a class="btn btn-outline-primary align-self-start" href="{{ $item->website_url }}" target="_blank" rel="noopener">Visit Website</a>@endif</div></div>
 @empty
 <div class="col-12"><div class="alert alert-light border text-center">Institution information will be published soon.</div></div>
 @endforelse
