@@ -5,6 +5,11 @@
 
     RewriteEngine On
 
+    # Force HTTP traffic to HTTPS
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
@@ -26,6 +31,7 @@
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
     Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
     Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+    Header always set Content-Security-Policy "default-src 'self' https: data:; img-src 'self' https: data:; style-src 'self' https: 'unsafe-inline'; script-src 'self' https: 'unsafe-inline'; font-src 'self' https: data:; connect-src 'self' https:; frame-src 'self' https:; frame-ancestors 'self'; form-action 'self'; base-uri 'self'; object-src 'none'"
 </IfModule>
 
 # php -- BEGIN cPanel-generated handler, do not edit
