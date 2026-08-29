@@ -9,5 +9,6 @@ deployment:
     - /opt/cpanel/ea-php83/root/usr/bin/php /home4/mcied45x/repositories/MCI-EDUCATIONAL-GROUP/artisan route:cache
     - /opt/cpanel/ea-php83/root/usr/bin/php /home4/mcied45x/repositories/MCI-EDUCATIONAL-GROUP/artisan view:cache
     - /opt/cpanel/ea-php83/root/usr/bin/php /home4/mcied45x/repositories/MCI-EDUCATIONAL-GROUP/artisan about
+    - /opt/cpanel/ea-php83/root/usr/bin/php /home4/mcied45x/repositories/MCI-EDUCATIONAL-GROUP/artisan mci:central-audit
     - /bin/bash /home4/mcied45x/repositories/MCI-EDUCATIONAL-GROUP/scripts/health-check.sh
     - /opt/cpanel/ea-php83/root/usr/bin/php /home4/mcied45x/repositories/MCI-EDUCATIONAL-GROUP/scripts/functional-check.php
