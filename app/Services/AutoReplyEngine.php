@@ -29,7 +29,10 @@ class AutoReplyEngine
         ])));
 
         $rules = AutoReplyRule::with('template')
-            ->where('institution_id', $institution->id)
+            ->where(function ($query) use ($institution) {
+                $query->where('institution_id', $institution->id)
+                    ->orWhereNull('institution_id');
+            })
             ->where('is_active', true)
             ->orderBy('priority')
             ->get();
