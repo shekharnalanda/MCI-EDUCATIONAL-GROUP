@@ -13,7 +13,9 @@
 /storage/framework/views/*
 /.env
 /.env.backup
-/.phpunit.result.cache
+/.env.save
+/.env.save.*
+.phpunit.result.cache
 /.phpunit.cache
 /.fleet
 /.idea
