@@ -50,7 +50,12 @@ class AutoReplyController extends Controller
 
     public function test(Request $request)
     {
-        $data = $request->validate(['institution_id' => 'required|exists:institutions,id','message' => 'required|string|max:5000','customer_name' => 'nullable|string|max:120']);
+        $data = $request->validate([
+            'institution_id' => 'required|exists:institutions,id',
+            'message' => 'required|string|max:5000',
+            'customer_name' => 'nullable|string|max:120',
+            'course_service' => 'nullable|string|max:180',
+        ]);
         $institution = Institution::findOrFail($data['institution_id']);
         $text = Str::lower($data['message']);
         $rules = AutoReplyRule::with('template')->where('is_active', true)
@@ -63,8 +68,13 @@ class AutoReplyController extends Controller
             return back()->with('testResult', ['matched' => false, 'message' => 'No safe rule matched. This enquiry would go to Manual Review.']);
         }
         $body = strtr($matched->template->body, [
-            '{customer_name}' => $data['customer_name'] ?: 'Customer','{business_name}' => $institution->name,
-            '{website_url}' => $institution->website_url ?: '','{contact_number}' => $institution->phone ?: '',
+            '{customer_name}' => $data['customer_name'] ?: 'Customer',
+            '{business_name}' => $institution->name,
+            '{course_name}' => $data['course_service'] ?: 'requested course/service',
+            '{website_url}' => $institution->website_url ?: '',
+            '{contact_number}' => $institution->phone ?: '',
+            '{customer_phone}' => '',
+            '{customer_email}' => '',
         ]);
         return back()->with('testResult', ['matched' => true,'rule' => $matched->name,'template' => $matched->template->name,'subject' => $matched->template->subject,'body' => $body]);
     }
