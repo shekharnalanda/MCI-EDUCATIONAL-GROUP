@@ -34,6 +34,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/institutions', [InstitutionController::class, 'index'])->name('institutions.index');
         Route::post('/institutions', [InstitutionController::class, 'store'])->name('institutions.store');
         Route::put('/institutions/{institution}', [InstitutionController::class, 'update'])->name('institutions.update');
+        Route::post('/institutions/{institution}/api-token', [InstitutionController::class, 'generateToken'])->name('institutions.api-token');
         Route::delete('/institutions/{institution}', [InstitutionController::class, 'destroy'])->name('institutions.destroy');
 
         Route::get('/news', [ContentController::class, 'news'])->name('news.index');
