@@ -12,5 +12,6 @@ class Customer extends Model
 
     public function firstInstitution() { return $this->belongsTo(Institution::class, 'first_institution_id'); }
     public function enquiries() { return $this->hasMany(Enquiry::class); }
+    public function admissions() { return $this->hasMany(CentralAdmission::class); }
     public function communications() { return $this->hasMany(CommunicationLog::class); }
 }
