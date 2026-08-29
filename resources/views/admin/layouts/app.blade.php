@@ -12,7 +12,7 @@
 <body>
 <div class="container-fluid"><div class="row">
     <aside class="col-lg-2 p-3 sidebar">
-        <div class="admin-brand"><img src="{{ asset('images/mci-logo.png') }}" alt="MCI Educational Group logo"><h5 class="fw-bold mb-1">MCI MASTER ADMIN</h5><small>Educational Group</small></div><hr>
+        <div class="admin-brand"><img src="{{ asset('images/mci-logo.png') }}" alt="MCI Educational Group logo"><h5 class="fw-bold mb-1">{{ auth()->user()?->isMasterAdmin() ? 'MCI MASTER ADMIN' : 'MCI ADMIN' }}</h5><small>{{ auth()->user()?->institution?->name ?? 'Educational Group' }}</small></div><hr>
         <a class="{{ request()->routeIs('admin.dashboard')?'active':'' }}" href="{{ route('admin.dashboard') }}">Dashboard</a>
         <div class="nav-section">Central Management</div>
         <a class="{{ request()->routeIs('admin.enquiries.*')?'active':'' }}" href="{{ route('admin.enquiries.index') }}">Central Enquiries</a>
@@ -20,13 +20,18 @@
         <a class="{{ request()->routeIs('admin.customers.*')?'active':'' }}" href="{{ route('admin.customers.index') }}">Customers</a>
         <a class="{{ request()->routeIs('admin.follow-ups.*')?'active':'' }}" href="{{ route('admin.follow-ups.index') }}">Follow-ups</a>
         <a class="{{ request()->routeIs('admin.communications.*')?'active':'' }}" href="{{ route('admin.communications.index') }}">Communication History</a>
-        <a class="{{ request()->routeIs('admin.auto-replies.*')?'active':'' }}" href="{{ route('admin.auto-replies.index') }}">Auto Reply Center</a>
-        <a class="{{ request()->routeIs('admin.institutions.*')?'active':'' }}" href="{{ route('admin.institutions.index') }}">Business Units</a>
-        <div class="nav-section">Website CMS</div>
-        <a href="{{ route('admin.news.index') }}">News & Events</a>
-        <a href="{{ route('admin.gallery.index') }}">Gallery</a>
-        <a href="{{ route('admin.downloads.index') }}">Downloads</a>
-        <a href="{{ route('admin.settings.index') }}">Settings</a>
+        <a class="{{ request()->routeIs('admin.reports.*')?'active':'' }}" href="{{ route('admin.reports.index') }}">Reports</a>
+        @if(auth()->user()?->isMasterAdmin())
+            <a class="{{ request()->routeIs('admin.auto-replies.*')?'active':'' }}" href="{{ route('admin.auto-replies.index') }}">Auto Reply Center</a>
+            <a class="{{ request()->routeIs('admin.institutions.*')?'active':'' }}" href="{{ route('admin.institutions.index') }}">Business Units</a>
+            <a class="{{ request()->routeIs('admin.users.*')?'active':'' }}" href="{{ route('admin.users.index') }}">Users & Permissions</a>
+            <a class="{{ request()->routeIs('admin.audit.*')?'active':'' }}" href="{{ route('admin.audit.index') }}">Audit Logs</a>
+            <div class="nav-section">Website CMS</div>
+            <a href="{{ route('admin.news.index') }}">News & Events</a>
+            <a href="{{ route('admin.gallery.index') }}">Gallery</a>
+            <a href="{{ route('admin.downloads.index') }}">Downloads</a>
+            <a href="{{ route('admin.settings.index') }}">Settings</a>
+        @endif
         <hr><a href="{{ route('home') }}" target="_blank">View Website</a>
         <form method="POST" action="{{ route('admin.logout') }}" class="mt-2">@csrf<button class="btn btn-light w-100">Logout</button></form>
     </aside>
