@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\AutoReplyController;
+use App\Http\Controllers\Admin\CentralEnquiryController;
 use App\Http\Controllers\Admin\ContentController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InstitutionController;
@@ -49,9 +51,18 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::put('/downloads/{download}', [ContentController::class, 'updateDownload'])->name('downloads.update');
         Route::delete('/downloads/{download}', [ContentController::class, 'deleteDownload'])->name('downloads.destroy');
 
-        Route::get('/enquiries', [ContentController::class, 'enquiries'])->name('enquiries.index');
-        Route::patch('/enquiries/{enquiry}', [ContentController::class, 'updateEnquiry'])->name('enquiries.update');
-        Route::delete('/enquiries/{enquiry}', [ContentController::class, 'deleteEnquiry'])->name('enquiries.destroy');
+        Route::get('/enquiries', [CentralEnquiryController::class, 'index'])->name('enquiries.index');
+        Route::get('/enquiries/{enquiry}', [CentralEnquiryController::class, 'show'])->name('enquiries.show');
+        Route::patch('/enquiries/{enquiry}', [CentralEnquiryController::class, 'update'])->name('enquiries.update');
+        Route::post('/enquiries/{enquiry}/reply', [CentralEnquiryController::class, 'reply'])->name('enquiries.reply');
+        Route::post('/enquiries/{enquiry}/follow-up', [CentralEnquiryController::class, 'scheduleFollowUp'])->name('enquiries.follow-up');
+        Route::delete('/enquiries/{enquiry}', [CentralEnquiryController::class, 'destroy'])->name('enquiries.destroy');
+
+        Route::get('/auto-replies', [AutoReplyController::class, 'index'])->name('auto-replies.index');
+        Route::post('/auto-replies/templates', [AutoReplyController::class, 'storeTemplate'])->name('auto-replies.templates.store');
+        Route::post('/auto-replies/rules', [AutoReplyController::class, 'storeRule'])->name('auto-replies.rules.store');
+        Route::patch('/auto-replies/rules/{rule}/toggle', [AutoReplyController::class, 'toggleRule'])->name('auto-replies.rules.toggle');
+        Route::patch('/auto-replies/business/{institution}/toggle', [AutoReplyController::class, 'toggleBusiness'])->name('auto-replies.business.toggle');
 
         Route::get('/settings', [ContentController::class, 'settings'])->name('settings.index');
         Route::put('/settings', [ContentController::class, 'saveSettings'])->name('settings.update');
