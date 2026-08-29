@@ -26,5 +26,6 @@ class Enquiry extends Model
     public function customer() { return $this->belongsTo(Customer::class); }
     public function assignedUser() { return $this->belongsTo(User::class, 'assigned_user_id'); }
     public function communications() { return $this->hasMany(CommunicationLog::class); }
+    public function communicationLogs() { return $this->hasMany(CommunicationLog::class); }
     public function followUps() { return $this->hasMany(FollowUp::class); }
 }
