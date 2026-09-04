@@ -498,6 +498,216 @@ a{text-decoration:none}
 .footer a{color:#acbdcb}
 .footer a:hover{color:#fff}
 
+.premium-ribbon{
+    background:#fff;
+    border-bottom:1px solid var(--mci-border);
+}
+
+.premium-ribbon-inner{
+    min-height:54px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px 30px;
+    color:#43596b;
+    font-size:.85rem;
+    font-weight:700;
+}
+
+.premium-ribbon-item{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.premium-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--mci-green);
+}
+
+.hero-badge{
+    display:inline-flex;
+    align-items:center;
+    margin-top:22px;
+    padding:8px 12px;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:6px;
+    background:rgba(255,255,255,.07);
+    color:#dce8f2;
+    font-size:.8rem;
+    font-weight:700;
+}
+
+.quick-access{
+    margin-top:-1px;
+    background:#fff;
+    border-bottom:1px solid var(--mci-border);
+}
+
+.quick-card{
+    display:block;
+    height:100%;
+    padding:28px 24px;
+    border-right:1px solid var(--mci-border);
+    color:var(--mci-navy);
+    transition:.2s ease;
+}
+
+.quick-card:hover{
+    background:var(--mci-bg);
+    color:var(--mci-blue);
+}
+
+.quick-card small{
+    display:block;
+    margin-bottom:5px;
+    color:var(--mci-green);
+    font-size:.7rem;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:.11em;
+}
+
+.quick-card strong{
+    display:block;
+    font-size:1rem;
+}
+
+.academic-panel{
+    overflow:hidden;
+    border:1px solid var(--mci-border);
+    border-radius:14px;
+    background:#fff;
+    box-shadow:0 16px 42px rgba(7,27,49,.06);
+}
+
+.academic-panel-main{
+    padding:42px;
+}
+
+.academic-side{
+    height:100%;
+    padding:42px;
+    background:var(--mci-navy);
+    color:#fff;
+}
+
+.academic-side p{
+    color:#b8c9d7;
+}
+
+.academic-list{
+    padding:0;
+    margin:24px 0 0;
+    list-style:none;
+}
+
+.academic-list li{
+    position:relative;
+    padding:12px 0 12px 28px;
+    border-bottom:1px solid rgba(7,27,49,.08);
+    color:#536879;
+}
+
+.academic-list li:before{
+    content:"✓";
+    position:absolute;
+    left:0;
+    color:var(--mci-green);
+    font-weight:900;
+}
+
+.governance-section{
+    background:#eef5f1;
+}
+
+.governance-card{
+    height:100%;
+    padding:34px;
+    border:1px solid #dce9e1;
+    border-radius:12px;
+    background:#fff;
+}
+
+.governance-card h4{
+    color:var(--mci-navy);
+    font-weight:900;
+}
+
+.governance-label{
+    color:var(--mci-green);
+    font-size:.72rem;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+}
+
+.admission-panel{
+    overflow:hidden;
+    border-radius:16px;
+    box-shadow:0 22px 55px rgba(7,27,49,.12);
+}
+
+.admission-main{
+    height:100%;
+    padding:48px;
+    background:linear-gradient(120deg,var(--mci-blue),#07538c);
+    color:#fff;
+}
+
+.admission-main p{
+    color:#dce9f3;
+}
+
+.admission-actions{
+    height:100%;
+    padding:42px;
+    background:#fff;
+}
+
+.admission-step{
+    display:flex;
+    align-items:flex-start;
+    gap:16px;
+    padding:16px 0;
+    border-bottom:1px solid var(--mci-border);
+}
+
+.admission-step:last-child{
+    border-bottom:0;
+}
+
+.step-number{
+    flex:0 0 38px;
+    height:38px;
+    display:grid;
+    place-items:center;
+    border-radius:50%;
+    background:var(--mci-bg);
+    color:var(--mci-blue);
+    font-weight:900;
+}
+
+.admission-step strong{
+    display:block;
+    color:var(--mci-navy);
+}
+
+.admission-step span{
+    display:block;
+    color:var(--mci-muted);
+    font-size:.9rem;
+}
+
+.performance-note{
+    font-size:.78rem;
+    color:var(--mci-muted);
+}
+
+
 @media(max-width:991.98px){
     .admin-btn{margin:.5rem 0 0}
     .hero{min-height:620px}
@@ -599,6 +809,35 @@ mcieducationalgroup@gmail.com
 </div>
 
 
+<div class="premium-ribbon">
+<div class="container">
+<div class="premium-ribbon-inner">
+
+<div class="premium-ribbon-item">
+<span class="premium-dot"></span>
+Education &amp; Learning
+</div>
+
+<div class="premium-ribbon-item">
+<span class="premium-dot"></span>
+Skill Development
+</div>
+
+<div class="premium-ribbon-item">
+<span class="premium-dot"></span>
+Digital Platforms
+</div>
+
+<div class="premium-ribbon-item">
+<span class="premium-dot"></span>
+Community Services
+</div>
+
+</div>
+</div>
+</div>
+
+
 <nav class="navbar navbar-expand-lg main-nav sticky-top">
 <div class="container py-2">
 
@@ -672,6 +911,12 @@ empowerment and dependable professional services for learners,
 families and communities.
 </p>
 
+<div class="hero-badge">
+A professionally managed institutional ecosystem under
+Chandrashekhar &amp; Narayan Educational Trust
+</div>
+
+
 <div class="hero-actions">
 <a href="/institutions" class="btn-mci">
 Explore Our Institutions
@@ -744,6 +989,46 @@ Quamruddin Ganj, Bihar Sharif, Nalanda
 </div>
 </div>
 </section>
+
+
+<section class="quick-access">
+<div class="container">
+
+<div class="row g-0">
+
+<div class="col-6 col-lg-3">
+<a href="/institutions" class="quick-card">
+<small>Explore</small>
+<strong>Our Institutions →</strong>
+</a>
+</div>
+
+<div class="col-6 col-lg-3">
+<a href="/programs" class="quick-card">
+<small>Learn</small>
+<strong>Programs &amp; Courses →</strong>
+</a>
+</div>
+
+<div class="col-6 col-lg-3">
+<a href="/news-events" class="quick-card">
+<small>Discover</small>
+<strong>News &amp; Events →</strong>
+</a>
+</div>
+
+<div class="col-6 col-lg-3">
+<a href="/contact" class="quick-card">
+<small>Connect</small>
+<strong>Admission &amp; Enquiry →</strong>
+</a>
+</div>
+
+</div>
+
+</div>
+</section>
+
 
 
 <section class="section">
@@ -828,6 +1113,90 @@ A scalable institutional framework ready for future initiatives.
 
 </div>
 </section>
+
+
+<section class="section">
+<div class="container">
+
+<div class="academic-panel">
+
+<div class="row g-0">
+
+<div class="col-lg-7">
+
+<div class="academic-panel-main">
+
+<div class="section-kicker">
+Academic &amp; Institutional Approach
+</div>
+
+<h2 class="section-title display-5 mt-2">
+Learning designed around knowledge, skills and real-world relevance.
+</h2>
+
+<p class="section-copy mt-3">
+Our institutional model combines academic learning, practical skill
+development, digital access and community-focused services within a
+single coordinated ecosystem.
+</p>
+
+<ul class="academic-list">
+
+<li>
+Learner-focused education and training environment
+</li>
+
+<li>
+Practical technology and career-oriented skill development
+</li>
+
+<li>
+Connected digital systems supporting institutional access
+</li>
+
+<li>
+Scalable structure for future programs and institutions
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<div class="col-lg-5">
+
+<div class="academic-side">
+
+<div class="section-kicker text-warning">
+Our Direction
+</div>
+
+<h3 class="fw-bold mt-3">
+Education that continues beyond the classroom.
+</h3>
+
+<p class="mt-3">
+MCI Educational Group is being developed as a modern education and
+services network where learners can move from foundational learning
+to skills, digital resources and professional opportunities.
+</p>
+
+<a href="/about" class="btn btn-light fw-bold mt-3">
+Know More About MCI
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
 
 
 <section class="section section-soft">
@@ -945,6 +1314,83 @@ Institution information will be published soon.
 
 </div>
 </section>
+
+
+<section class="section governance-section">
+<div class="container">
+
+<div class="row g-5 align-items-center">
+
+<div class="col-lg-5">
+
+<div class="section-kicker">
+Trust &amp; Governance
+</div>
+
+<h2 class="section-title display-5 mt-2">
+A common institutional framework with responsible management.
+</h2>
+
+<p class="section-copy mt-3 mb-0">
+The institutions and services of MCI Educational Group operate under
+the broader framework of Chandrashekhar &amp; Narayan Educational Trust,
+supporting coordinated administration, institutional continuity and
+future development.
+</p>
+
+</div>
+
+<div class="col-lg-7">
+
+<div class="row g-4">
+
+<div class="col-md-6">
+<div class="governance-card">
+
+<div class="governance-label">
+Group Identity
+</div>
+
+<h4 class="mt-3">
+MCI Educational Group
+</h4>
+
+<p class="section-copy mb-0">
+A unified public identity connecting education, training,
+digital platforms and professional services.
+</p>
+
+</div>
+</div>
+
+<div class="col-md-6">
+<div class="governance-card">
+
+<div class="governance-label">
+Trust Framework
+</div>
+
+<h4 class="mt-3">
+Chandrashekhar &amp; Narayan Educational Trust
+</h4>
+
+<p class="section-copy mb-0">
+Supporting institutional governance, coordination and
+long-term educational development.
+</p>
+
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
 
 
 <section class="section stats">
@@ -1205,6 +1651,95 @@ View Gallery
 </section>
 
 @endif
+
+
+<section class="section section-soft">
+<div class="container">
+
+<div class="admission-panel">
+
+<div class="row g-0">
+
+<div class="col-lg-7">
+
+<div class="admission-main">
+
+<div class="section-kicker text-warning">
+Admissions &amp; Enquiries
+</div>
+
+<h2 class="display-5 fw-bold mt-3">
+Find the right institution or service within the MCI network.
+</h2>
+
+<p class="mt-3">
+Whether you are looking for school education, computer training,
+learning resources, digital services or other institutional support,
+our central enquiry pathway can guide you to the relevant unit.
+</p>
+
+<a href="/contact" class="btn btn-light btn-lg fw-bold mt-3">
+Start Your Enquiry
+</a>
+
+</div>
+
+</div>
+
+<div class="col-lg-5">
+
+<div class="admission-actions">
+
+<div class="admission-step">
+
+<div class="step-number">1</div>
+
+<div>
+<strong>Choose your requirement</strong>
+<span>
+Select the institution, program or service you are interested in.
+</span>
+</div>
+
+</div>
+
+<div class="admission-step">
+
+<div class="step-number">2</div>
+
+<div>
+<strong>Submit your enquiry</strong>
+<span>
+Share your contact and basic requirement through the central system.
+</span>
+</div>
+
+</div>
+
+<div class="admission-step">
+
+<div class="step-number">3</div>
+
+<div>
+<strong>Receive guidance</strong>
+<span>
+Your enquiry can be directed to the appropriate institution or team.
+</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
 
 
 <section class="section pt-0">
