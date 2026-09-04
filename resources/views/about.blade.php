@@ -1,44 +1,155 @@
 @extends('layouts.app')
 
-@section('title','About Us | MCI Educational Group')
-@section('meta_description','Know about MCI Educational Group, working under Chandrashekhar & Narayan Educational Trust.')
+@section('title', 'About Us | MCI Educational Group')
 
 @section('content')
-<section class="page-hero">
-    <div class="container">
-        <span class="badge bg-light text-primary mb-3">About the Group</span>
-        <h1 class="display-5 fw-bold">MCI Educational Group</h1>
-        <p class="lead mb-0">An Institution With Global Reach</p>
-    </div>
+
+<section class="v2-page-hero">
+<div class="container">
+<div class="v2-kicker">About MCI Educational Group</div>
+
+<h1>Education, skills and opportunities under one institutional ecosystem.</h1>
+
+<p>
+MCI Educational Group brings together education, training,
+digital learning and professional services through a coordinated
+institutional framework.
+</p>
+</div>
 </section>
 
-<section class="py-5">
-    <div class="container">
-        <div class="row g-5 align-items-center">
-            <div class="col-lg-7">
-                <h2 class="section-title mb-3">Education, Skills and Opportunities Under One Group</h2>
-                <p>MCI Educational Group works under Chandrashekhar &amp; Narayan Educational Trust and brings together education, computer training, digital learning, library services and web services through its growing network of institutions and projects.</p>
-                <p>Our aim is to provide accessible, practical and future-ready learning opportunities while creating a common platform for students, families, institutions and the community.</p>
-            </div>
-            <div class="col-lg-5">
-                <div class="p-4 rounded-4 bg-light border">
-                    <h5 class="fw-bold">Group Office</h5>
-                    <p class="mb-2">MCI CAMPUS, Quamruddin Ganj, Bihar Sharif, Nalanda - 803101, Bihar (India)</p>
-                    <p class="mb-1"><strong>Phone:</strong> 7004773247, 9334779133</p>
-                    <p class="mb-0"><strong>Email:</strong> mcieducationalgroup@gmail.com</p>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="v2-breadcrumb">
+<div class="container">
+<a href="{{ route('home') }}">Home</a>
+<span>/</span>
+<span>About</span>
+</div>
+</div>
+
+<section class="v2-section">
+<div class="container">
+
+<div class="row g-5 align-items-center">
+
+<div class="col-lg-6">
+<div class="v2-section-kicker">Who We Are</div>
+
+<h2 class="v2-title display-5 mt-2">
+Building accessible and future-ready learning opportunities.
+</h2>
+</div>
+
+<div class="col-lg-6">
+<p class="v2-copy">
+MCI Educational Group serves as a common institutional identity
+for multiple education, training, knowledge and service initiatives.
+Our aim is to provide accessible, practical and future-ready learning
+opportunities while creating a common platform for students,
+families, institutions and the community.
+</p>
+
+<p class="v2-copy mb-0">
+The group continues to strengthen its academic, digital and
+administrative systems so that each institution can develop
+within a coordinated and professionally managed ecosystem.
+</p>
+</div>
+
+</div>
+</div>
 </section>
 
-<section class="py-5 bg-light">
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-md-4"><div class="p-4 bg-white rounded-4 h-100 shadow-sm"><h4 class="section-title">Vision</h4><p class="mb-0">To build a trusted educational ecosystem that connects knowledge, skills, technology and opportunity.</p></div></div>
-            <div class="col-md-4"><div class="p-4 bg-white rounded-4 h-100 shadow-sm"><h4 class="section-title">Mission</h4><p class="mb-0">To expand quality learning and practical skill development through responsive institutions and modern digital services.</p></div></div>
-            <div class="col-md-4"><div class="p-4 bg-white rounded-4 h-100 shadow-sm"><h4 class="section-title">Values</h4><p class="mb-0">Quality, accessibility, innovation, service, transparency and continuous improvement.</p></div></div>
-        </div>
-    </div>
+<section class="v2-section v2-soft">
+<div class="container">
+
+<div class="text-center mx-auto mb-5" style="max-width:760px">
+<div class="v2-section-kicker">Our Institutional Approach</div>
+
+<h2 class="v2-title display-5 mt-2">
+Learning with purpose. Growth with responsibility.
+</h2>
+</div>
+
+<div class="row g-4">
+
+<div class="col-md-6 col-xl-3">
+<div class="v2-card">
+<div class="v2-mark">01</div>
+<h3 class="v2-title h5 mt-4">Education</h3>
+<p class="v2-copy mb-0">
+Learner-focused academic and foundational opportunities.
+</p>
+</div>
+</div>
+
+<div class="col-md-6 col-xl-3">
+<div class="v2-card">
+<div class="v2-mark">02</div>
+<h3 class="v2-title h5 mt-4">Skills</h3>
+<p class="v2-copy mb-0">
+Practical learning designed to support career readiness.
+</p>
+</div>
+</div>
+
+<div class="col-md-6 col-xl-3">
+<div class="v2-card">
+<div class="v2-mark">03</div>
+<h3 class="v2-title h5 mt-4">Digital Access</h3>
+<p class="v2-copy mb-0">
+Technology-enabled platforms connecting learners and services.
+</p>
+</div>
+</div>
+
+<div class="col-md-6 col-xl-3">
+<div class="v2-card">
+<div class="v2-mark">04</div>
+<h3 class="v2-title h5 mt-4">Growth</h3>
+<p class="v2-copy mb-0">
+A scalable framework supporting future institutions and initiatives.
+</p>
+</div>
+</div>
+
+</div>
+</div>
 </section>
+
+<section class="v2-section">
+<div class="container">
+
+<div class="v2-trust">
+
+<div class="row g-4 align-items-center">
+
+<div class="col-lg-8">
+<div class="text-uppercase small fw-bold opacity-75">
+Trust &amp; Governance
+</div>
+
+<h2 class="fw-bold mt-2">
+Chandrashekhar &amp; Narayan Educational Trust
+</h2>
+
+<p class="mb-0 opacity-75">
+MCI Educational Group operates within a common institutional
+framework supporting coordinated administration, continuity
+and responsible educational development.
+</p>
+</div>
+
+<div class="col-lg-4 text-lg-end">
+<a href="{{ route('institutions') }}"
+class="btn btn-light btn-lg fw-bold">
+Explore Our Institutions
+</a>
+</div>
+
+</div>
+</div>
+
+</div>
+</section>
+
 @endsection
