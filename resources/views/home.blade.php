@@ -44,6 +44,43 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 
+:focus-visible{
+    outline:3px solid #f1c75b;
+    outline-offset:3px;
+}
+
+.skip-link{
+    position:absolute;
+    left:-9999px;
+    top:10px;
+    z-index:99999;
+    padding:10px 16px;
+    background:#fff;
+    color:#061b31;
+    font-weight:800;
+    border-radius:5px;
+}
+
+.skip-link:focus{
+    left:10px;
+}
+
+img{
+    max-width:100%;
+}
+
+@media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+
+    *,
+    *:before,
+    *:after{
+        scroll-behavior:auto!important;
+        transition:none!important;
+        animation:none!important;
+    }
+}
+
 body{
     margin:0;
     font-family:Arial,Helvetica,sans-serif;
@@ -757,6 +794,33 @@ a{text-decoration:none}
     .cta-panel{
         padding:32px 25px;
     }
+
+    .premium-ribbon-inner{
+        justify-content:flex-start;
+        gap:7px 16px;
+        padding:10px 0;
+    }
+
+    .quick-card{
+        padding:20px 14px;
+        border-bottom:1px solid var(--mci-border);
+    }
+
+    .academic-panel-main,
+    .academic-side,
+    .admission-main,
+    .admission-actions{
+        padding:30px 24px;
+    }
+
+    .institution-body{
+        padding:24px;
+    }
+
+    .hero-actions a{
+        width:100%;
+        text-align:center;
+    }
 }
 </style>
 
@@ -784,6 +848,10 @@ a{text-decoration:none}
 </head>
 
 <body>
+
+<a class="skip-link" href="#main-content">
+Skip to main content
+</a>
 
 <header>
 
@@ -846,6 +914,8 @@ Community Services
     src="{{ asset('images/mci-logo.png') }}"
     alt="MCI Educational Group logo"
     class="brand-logo"
+    width="66"
+    height="66"
 >
 <span>
 <span class="brand-title">MCI EDUCATIONAL GROUP</span>
@@ -858,6 +928,9 @@ Community Services
     type="button"
     data-bs-toggle="collapse"
     data-bs-target="#mciMainNav"
+aria-controls="mciMainNav"
+aria-expanded="false"
+aria-label="Toggle navigation"
 >
 <span class="navbar-toggler-icon"></span>
 </button>
@@ -888,7 +961,7 @@ Admin Login
 </header>
 
 
-<main>
+<main id="main-content">
 
 <section class="hero">
 <div class="container">
@@ -1254,7 +1327,10 @@ $institutionCode = strtoupper(
     src="{{ $item->logo ?: $item->image }}"
     alt="{{ $item->name }} logo"
     class="institution-logo"
+    width="68"
+    height="68"
     loading="lazy"
+    decoding="async"
     onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"
 >
 
@@ -1621,6 +1697,7 @@ View Gallery
     src="{{ $item->image }}"
     alt="{{ $item->title }}"
     loading="lazy"
+    decoding="async"
 >
 
 <div class="card-body">
@@ -1791,6 +1868,8 @@ Send Enquiry
     src="{{ asset('images/mci-logo.png') }}"
     alt="MCI Educational Group logo"
     class="footer-logo mb-3"
+    width="88"
+    height="88"
 >
 
 <h5>MCI EDUCATIONAL GROUP</h5>
