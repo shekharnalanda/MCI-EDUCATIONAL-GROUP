@@ -11,6 +11,8 @@
 <link rel="canonical" href="https://mciedu.in/">
 <link rel="icon" type="image/png" href="{{ asset('images/mci-logo.png') }}">
 <link rel="apple-touch-icon" href="{{ asset('images/mci-logo.png') }}">
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="theme-color" content="#061b31">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MCI Educational Group">
@@ -902,6 +904,91 @@ a{text-decoration:none}
         text-align:center;
     }
 }
+
+/* MCI footer app installer */
+.footer-bottom-bar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.mci-install-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    min-height:42px;
+    padding:9px 16px;
+    border:1px solid rgba(255,255,255,.28);
+    border-radius:999px;
+    background:rgba(255,255,255,.08);
+    color:#fff!important;
+    font-size:.82rem;
+    font-weight:800;
+    cursor:pointer;
+    transition:.2s ease;
+}
+
+.mci-install-btn:hover{
+    background:#fff;
+    color:var(--mci-navy)!important;
+    border-color:#fff;
+}
+
+.mci-install-btn .install-symbol{
+    display:grid;
+    place-items:center;
+    width:25px;
+    height:25px;
+    border-radius:50%;
+    background:var(--mci-green);
+    color:#fff;
+    font-size:1rem;
+    line-height:1;
+}
+
+.mci-install-btn[hidden]{
+    display:none!important;
+}
+
+.install-help{
+    position:fixed;
+    left:50%;
+    bottom:22px;
+    z-index:9999;
+    transform:translateX(-50%);
+    width:min(92vw,520px);
+    padding:14px 18px;
+    border-radius:10px;
+    background:#fff;
+    color:#203344;
+    box-shadow:0 14px 45px rgba(0,0,0,.22);
+    font-size:.88rem;
+    display:none;
+}
+
+.install-help.show{
+    display:block;
+}
+
+@media(max-width:575.98px){
+    .footer-bottom-bar{
+        align-items:stretch;
+    }
+
+    .mci-install-btn{
+        width:100%;
+        margin-top:4px;
+    }
+
+    .footer-bottom-copy{
+        width:100%;
+        text-align:center;
+    }
+}
+
 </style>
 
 @verbatim
@@ -2007,15 +2094,108 @@ Contact &amp; Enquiry →
 
 <hr class="border-secondary my-4">
 
-<div class="small">
+<div class="footer-bottom-bar">
+
+<div class="small footer-bottom-copy">
 © {{ date('Y') }} MCI Educational Group. All rights reserved.
 </div>
+
+<button
+    type="button"
+    id="mciInstallApp"
+    class="mci-install-btn"
+    aria-label="Install MCI Educational Group App"
+>
+    <span class="install-symbol">↓</span>
+    <span>Install MCI App</span>
+</button>
+
+</div>
+
+<div
+    id="mciInstallHelp"
+    class="install-help"
+    role="status"
+    aria-live="polite"
+></div>
 
 </div>
 </footer>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<script>
+(function () {
+    let deferredPrompt = null;
+
+    const button = document.getElementById('mciInstallApp');
+    const help = document.getElementById('mciInstallHelp');
+
+    if (!button) return;
+
+    const standalone =
+        window.matchMedia('(display-mode: standalone)').matches ||
+        window.navigator.standalone === true;
+
+    if (standalone) {
+        button.hidden = true;
+    }
+
+    window.addEventListener('beforeinstallprompt', function (event) {
+        event.preventDefault();
+        deferredPrompt = event;
+        button.hidden = false;
+    });
+
+    button.addEventListener('click', async function () {
+
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+
+            try {
+                await deferredPrompt.userChoice;
+            } catch (e) {}
+
+            deferredPrompt = null;
+            return;
+        }
+
+        const isIOS =
+            /iphone|ipad|ipod/i.test(navigator.userAgent);
+
+        if (help) {
+            if (isIOS) {
+                help.textContent =
+                    'iPhone/iPad: Safari में Share button खोलें और “Add to Home Screen” चुनें.';
+            } else {
+                help.textContent =
+                    'Browser menu खोलें और “Install app” या “Add to Home screen” चुनें.';
+            }
+
+            help.classList.add('show');
+
+            setTimeout(function () {
+                help.classList.remove('show');
+            }, 6500);
+        }
+    });
+
+    window.addEventListener('appinstalled', function () {
+        button.hidden = true;
+        deferredPrompt = null;
+    });
+
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+            navigator.serviceWorker
+                .register('/service-worker.js', {scope: '/'})
+                .catch(function () {});
+        });
+    }
+})();
+</script>
 
 </body>
 </html>

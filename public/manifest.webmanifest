@@ -1,0 +1,25 @@
+{
+  "name": "MCI Educational Group",
+  "short_name": "MCI",
+  "description": "Official mobile web app of MCI Educational Group.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#ffffff",
+  "theme_color": "#061b31",
+  "icons": [
+    {
+      "src": "/images/pwa/mci-app-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/pwa/mci-app-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
