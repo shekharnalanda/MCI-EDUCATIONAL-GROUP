@@ -169,7 +169,7 @@ a{text-decoration:none}
     color:#fff;
     background:
       linear-gradient(90deg,rgba(4,24,44,.97) 0%,rgba(7,48,83,.91) 52%,rgba(8,84,102,.67) 100%),
-      url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1900&q=85')
+      url('/images/mci-v2-campus-hero.webp')
       center/cover no-repeat;
 }
 
