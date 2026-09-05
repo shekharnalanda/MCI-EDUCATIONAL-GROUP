@@ -26,4 +26,7 @@ class Institution extends Model
     public function replyTemplates() { return $this->hasMany(ReplyTemplate::class); }
     public function autoReplyRules() { return $this->hasMany(AutoReplyRule::class); }
     public function communications() { return $this->hasMany(CommunicationLog::class); }
+    public function attendanceStudents() { return $this->hasMany(AttendanceStudent::class); }
+    public function attendanceDevices() { return $this->hasMany(AttendanceDevice::class); }
+    public function attendanceRecords() { return $this->hasMany(AttendanceRecord::class); }
 }

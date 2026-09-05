@@ -3,6 +3,9 @@
 declare(strict_types=1);
 
 use App\Models\AutoReplyRule;
+use App\Models\AttendanceDevice;
+use App\Models\AttendanceRecord;
+use App\Models\AttendanceStudent;
 use App\Models\CentralAdmission;
 use App\Models\CommunicationLog;
 use App\Models\Customer;
@@ -11,6 +14,7 @@ use App\Models\Enquiry;
 use App\Models\FollowUp;
 use App\Models\GalleryItem;
 use App\Models\Institution;
+use App\Models\IrisTemplate;
 use App\Models\NewsPost;
 use App\Models\ReplyTemplate;
 use App\Models\Setting;
@@ -35,6 +39,10 @@ $models = [
     'GalleryItem' => GalleryItem::class,
     'Download' => Download::class,
     'Setting' => Setting::class,
+    'AttendanceDevice' => AttendanceDevice::class,
+    'AttendanceStudent' => AttendanceStudent::class,
+    'IrisTemplate' => IrisTemplate::class,
+    'AttendanceRecord' => AttendanceRecord::class,
 ];
 
 $before = [];
@@ -77,6 +85,52 @@ try {
         'sync_enabled' => false,
     ]);
     check($institution->exists, 'Institution create');
+
+    $attendanceDevice = AttendanceDevice::create([
+        'institution_id' => $institution->id,
+        'name' => 'Functional MIS100V2',
+        'device_code' => 'functional-iris-'.$suffix,
+        'token_hash' => hash('sha256', 'functional-token-'.$suffix),
+        'is_active' => true,
+    ]);
+    check($attendanceDevice->exists, 'Iris attendance device create');
+
+    $attendanceStudent = AttendanceStudent::create([
+        'institution_id' => $institution->id,
+        'attendance_code' => (string) Illuminate\Support\Str::uuid(),
+        'admission_number' => 'FT-'.$suffix,
+        'name' => 'Functional Attendance Student',
+        'course_class' => 'Functional Course',
+        'status' => 'active',
+    ]);
+    check($attendanceStudent->exists, 'Attendance student create');
+
+    $irisTemplate = IrisTemplate::create([
+        'attendance_student_id' => $attendanceStudent->id,
+        'eye' => 'left',
+        'template_data' => base64_encode(random_bytes(96)),
+        'template_hash' => hash('sha256', 'functional-iris-'.$suffix),
+        'quality_score' => 90,
+        'sdk_version' => 'functional',
+        'enrolled_device_id' => $attendanceDevice->id,
+        'enrolled_at' => now(),
+    ]);
+    check($irisTemplate->exists && $irisTemplate->template_data !== null, 'Encrypted iris template create/read');
+
+    $attendanceRecord = AttendanceRecord::create([
+        'institution_id' => $institution->id,
+        'attendance_student_id' => $attendanceStudent->id,
+        'attendance_device_id' => $attendanceDevice->id,
+        'event_uuid' => (string) Illuminate\Support\Str::uuid(),
+        'attendance_date' => today(),
+        'session_key' => 'functional',
+        'captured_at' => now(),
+        'received_at' => now(),
+        'method' => 'iris',
+        'status' => 'present',
+        'match_score' => 95,
+    ]);
+    check($attendanceRecord->exists && $attendanceRecord->student?->is($attendanceStudent), 'Iris attendance record create/relationship');
 
     $customer = Customer::create([
         'name' => 'Functional Customer',

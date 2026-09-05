@@ -21,6 +21,7 @@
         <a class="{{ request()->routeIs('admin.follow-ups.*')?'active':'' }}" href="{{ route('admin.follow-ups.index') }}">Follow-ups</a>
         <a class="{{ request()->routeIs('admin.communications.*')?'active':'' }}" href="{{ route('admin.communications.index') }}">Communication History</a>
         <a class="{{ request()->routeIs('admin.reports.*')?'active':'' }}" href="{{ route('admin.reports.index') }}">Reports</a>
+        <a class="{{ request()->routeIs('admin.attendance.*')?'active':'' }}" href="{{ route('admin.attendance.index') }}">Iris Attendance</a>
         @if(auth()->user()?->isMasterAdmin())
             <a class="{{ request()->routeIs('admin.auto-replies.*')?'active':'' }}" href="{{ route('admin.auto-replies.index') }}">Auto Reply Center</a>
             <a class="{{ request()->routeIs('admin.institutions.*')?'active':'' }}" href="{{ route('admin.institutions.index') }}">Business Units</a>

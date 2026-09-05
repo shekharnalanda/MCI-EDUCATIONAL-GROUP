@@ -81,7 +81,7 @@ for path in / /about /institutions /programs /news-events /gallery /downloads /c
 done
 
 # Protected admin pages must redirect guests to the admin login page.
-for path in /admin /admin/institutions /admin/news /admin/gallery /admin/downloads /admin/enquiries /admin/settings; do
+for path in /admin /admin/institutions /admin/news /admin/gallery /admin/downloads /admin/enquiries /admin/attendance /admin/settings; do
   code=$(curl --retry 2 --retry-delay 1 --connect-timeout 10 --max-time 25 -sS -o /dev/null -w "%{http_code}" "$BASE_URL$path" 2>/dev/null || true)
   location=$(curl --retry 2 --retry-delay 1 --connect-timeout 10 --max-time 25 -sSI "$BASE_URL$path" 2>/dev/null | tr -d '\r' | awk 'BEGIN{IGNORECASE=1} /^Location:/{print $2; exit}')
   if [ "$code" = "302" ] && [ "$location" = "$BASE_URL/admin/login" ]; then

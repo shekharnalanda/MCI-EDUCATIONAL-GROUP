@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuditLogController;
+use App\Http\Controllers\Admin\AttendanceController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\AutoReplyController;
 use App\Http\Controllers\Admin\CentralAdmissionController;
@@ -57,6 +58,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::patch('/follow-ups/{followUp}/complete', [OperationsController::class, 'completeFollowUp'])->name('follow-ups.complete');
         Route::get('/reports', [ReportsController::class, 'index'])->name('reports.index');
 
+        Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
+        Route::get('/attendance/export', [AttendanceController::class, 'export'])->name('attendance.export');
+        Route::get('/attendance/print', [AttendanceController::class, 'print'])->name('attendance.print');
+        Route::post('/attendance/students', [AttendanceController::class, 'storeStudent'])->name('attendance.students.store');
+        Route::put('/attendance/students/{student}', [AttendanceController::class, 'updateStudent'])->name('attendance.students.update');
+
         Route::middleware('master.admin')->group(function () {
             Route::get('/institutions', [InstitutionController::class, 'index'])->name('institutions.index');
             Route::post('/institutions', [InstitutionController::class, 'store'])->name('institutions.store');
@@ -75,6 +82,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
             Route::post('/users', [UserManagementController::class, 'store'])->name('users.store');
             Route::put('/users/{user}', [UserManagementController::class, 'update'])->name('users.update');
             Route::get('/audit-logs', [AuditLogController::class, 'index'])->name('audit.index');
+
+            Route::post('/attendance/devices', [AttendanceController::class, 'storeDevice'])->name('attendance.devices.store');
+            Route::post('/attendance/devices/{device}/token', [AttendanceController::class, 'rotateDeviceToken'])->name('attendance.devices.token');
+            Route::patch('/attendance/devices/{device}/toggle', [AttendanceController::class, 'toggleDevice'])->name('attendance.devices.toggle');
 
             Route::get('/news', [ContentController::class, 'news'])->name('news.index');
             Route::post('/news', [ContentController::class, 'storeNews'])->name('news.store');
