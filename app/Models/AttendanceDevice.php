@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class AttendanceDevice extends Model
 {
     protected $fillable = [
-        'institution_id', 'name', 'device_code', 'serial_number', 'location',
+        'institution_id', 'attendance_branch_id', 'name', 'device_code', 'serial_number', 'location',
         'token_hash', 'is_active', 'last_seen_at', 'metadata',
     ];
 
@@ -23,5 +23,6 @@ class AttendanceDevice extends Model
     }
 
     public function institution() { return $this->belongsTo(Institution::class); }
+    public function branch() { return $this->belongsTo(AttendanceBranch::class, 'attendance_branch_id'); }
     public function records() { return $this->hasMany(AttendanceRecord::class); }
 }

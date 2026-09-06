@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schedule;
 use Illuminate\Support\Facades\Schema;
 
+Schedule::command('mci:attendance-auto-checkout')
+    ->everyMinute()
+    ->withoutOverlapping();
+
 Artisan::command('mci:status', function () {
     $this->info('MCI Educational Group application is ready.');
 })->purpose('Check the MCI application console');

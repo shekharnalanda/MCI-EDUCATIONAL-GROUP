@@ -36,6 +36,8 @@ class IrisAttendanceController extends Controller
             ->orderBy('id')->get()->map(fn ($student) => [
                 'id' => $student->id,
                 'attendance_code' => $student->attendance_code,
+                'person_type' => $student->person_type,
+                'branch_id' => $student->attendance_branch_id,
                 'name' => $student->name,
                 'admission_number' => $student->admission_number,
                 'roll_number' => $student->roll_number,
@@ -87,6 +89,7 @@ class IrisAttendanceController extends Controller
             'event_uuid' => ['required','uuid'],
             'student_id' => ['required','integer'],
             'captured_at' => ['required','date'],
+            'event_type' => ['nullable','in:check_in,check_out'],
             'session_key' => ['nullable','alpha_dash','max:40'],
             'match_score' => ['nullable','numeric','min:0'],
             'quality_score' => ['nullable','numeric','min:0'],
@@ -102,27 +105,108 @@ class IrisAttendanceController extends Controller
         $existingEvent = AttendanceRecord::where('event_uuid',$data['event_uuid'])->first();
         if ($existingEvent) return $this->attendanceResponse($existingEvent, true);
 
+        $eventType = $data['event_type'] ?? 'check_in';
+
         try {
-            [$record, $duplicate] = DB::transaction(function () use ($device,$student,$data,$capturedAt,$sessionKey) {
-                $existing = AttendanceRecord::where('institution_id',$device->institution_id)
-                    ->where('attendance_student_id',$student->id)->whereDate('attendance_date',$capturedAt->toDateString())
-                    ->where('session_key',$sessionKey)->lockForUpdate()->first();
-                if ($existing) return [$existing, true];
-                return [AttendanceRecord::create([
-                    'institution_id'=>$device->institution_id, 'attendance_student_id'=>$student->id,
-                    'attendance_device_id'=>$device->id, 'event_uuid'=>$data['event_uuid'],
-                    'attendance_date'=>$capturedAt->toDateString(), 'session_key'=>$sessionKey,
-                    'captured_at'=>$capturedAt, 'received_at'=>now(), 'method'=>'iris', 'status'=>'present',
-                    'match_score'=>$data['match_score'] ?? null, 'quality_score'=>$data['quality_score'] ?? null,
-                    'metadata'=>array_filter(['agent_version'=>$data['agent_version'] ?? null]),
-                ]), false];
+            [$record, $duplicate] = DB::transaction(function () use (
+                $device,
+                $student,
+                $data,
+                $capturedAt,
+                $sessionKey,
+                $eventType
+            ) {
+                $record = AttendanceRecord::where(
+                        'institution_id',
+                        $device->institution_id
+                    )
+                    ->where('attendance_student_id', $student->id)
+                    ->whereDate(
+                        'attendance_date',
+                        $capturedAt->toDateString()
+                    )
+                    ->where('session_key', $sessionKey)
+                    ->lockForUpdate()
+                    ->first();
+
+                if ($eventType === 'check_in') {
+                    if ($record) {
+                        return [$record, true];
+                    }
+
+                    $record = AttendanceRecord::create([
+                        'institution_id' => $device->institution_id,
+                        'attendance_branch_id' =>
+                            $device->attendance_branch_id
+                            ?: $student->attendance_branch_id,
+                        'attendance_student_id' => $student->id,
+                        'attendance_device_id' => $device->id,
+                        'event_uuid' => $data['event_uuid'],
+                        'attendance_date' =>
+                            $capturedAt->toDateString(),
+                        'session_key' => $sessionKey,
+                        'captured_at' => $capturedAt,
+                        'checked_in_at' => $capturedAt,
+                        'checked_out_at' => null,
+                        'checkout_source' => null,
+                        'minutes_completed' => 0,
+                        'received_at' => now(),
+                        'method' => 'iris',
+                        'status' => 'present',
+                        'match_score' =>
+                            $data['match_score'] ?? null,
+                        'quality_score' =>
+                            $data['quality_score'] ?? null,
+                        'metadata' => array_filter([
+                            'agent_version' =>
+                                $data['agent_version'] ?? null,
+                        ]),
+                    ]);
+
+                    return [$record, false];
+                }
+
+                if (! $record || ! $record->checked_in_at) {
+                    abort(422, 'Check-in is required before check-out.');
+                }
+
+                if ($record->checked_out_at) {
+                    return [$record, true];
+                }
+
+                $minutes = max(
+                    0,
+                    $record->checked_in_at
+                        ->diffInMinutes($capturedAt)
+                );
+
+                $record->update([
+                    'attendance_device_id' => $device->id,
+                    'checked_out_at' => $capturedAt,
+                    'checkout_source' => 'iris',
+                    'minutes_completed' => $minutes,
+                    'received_at' => now(),
+                    'status' => 'completed',
+                ]);
+
+                return [$record, false];
             });
         } catch (QueryException) {
-            $record = AttendanceRecord::where('event_uuid',$data['event_uuid'])->first()
-                ?? AttendanceRecord::where('institution_id',$device->institution_id)->where('attendance_student_id',$student->id)
-                    ->whereDate('attendance_date',$capturedAt->toDateString())->where('session_key',$sessionKey)->firstOrFail();
+            $record = AttendanceRecord::where(
+                    'institution_id',
+                    $device->institution_id
+                )
+                ->where('attendance_student_id', $student->id)
+                ->whereDate(
+                    'attendance_date',
+                    $capturedAt->toDateString()
+                )
+                ->where('session_key', $sessionKey)
+                ->firstOrFail();
+
             $duplicate = true;
         }
+
         $device->update(['last_seen_at'=>now()]);
         return $this->attendanceResponse($record, $duplicate);
     }
@@ -133,7 +217,13 @@ class IrisAttendanceController extends Controller
         return response()->json([
             'success'=>true, 'duplicate'=>$duplicate, 'message'=>$duplicate ? 'Attendance already marked.' : 'Attendance marked successfully.',
             'attendance'=>['id'=>$record->id, 'date'=>$record->attendance_date?->format('Y-m-d'),
-                'time'=>$record->captured_at?->format('H:i:s'), 'session'=>$record->session_key, 'status'=>$record->status],
+                'time'=>$record->captured_at?->format('H:i:s'),
+                'check_in'=>$record->checked_in_at?->toIso8601String(),
+                'check_out'=>$record->checked_out_at?->toIso8601String(),
+                'minutes'=>$record->minutes_completed,
+                'checkout_source'=>$record->checkout_source,
+                'session'=>$record->session_key,
+                'status'=>$record->status],
             'student'=>['id'=>$record->student->id, 'name'=>$record->student->name,
                 'admission_number'=>$record->student->admission_number, 'roll_number'=>$record->student->roll_number,
                 'course_class'=>$record->student->course_class, 'batch_section'=>$record->student->batch_section,
