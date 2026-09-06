@@ -125,7 +125,7 @@
 
         <div class="iris-card">
             <div class="iris-step">3</div>
-            <h3>MCI Biometric Connector</h3>
+            <h3>MCI Universal Biometric Connector V2</h3>
             <p>
                 Central multi-institution iris enrollment,
                 live preview, identification and Check-In/Check-Out.
@@ -141,7 +141,7 @@
             @if($connectorAvailable)
                 <a class="iris-btn green"
                    href="{{ route('admin.iris-software.download','connector') }}">
-                    Download MCI Connector
+                    Download Universal Connector V2
                 </a>
             @else
                 <span class="iris-disabled">
@@ -154,7 +154,7 @@
 
     <div class="iris-note">
         <strong>Installation order:</strong>
-        MIS100V2 Driver → Windows Runtime → MCI Biometric Connector.
+        MIS100V2 Driver → Windows Runtime → MCI Universal Biometric Connector V2.
         Each attendance computer must use the Device Code and Device
         Token issued for its own institution/branch.
     </div>

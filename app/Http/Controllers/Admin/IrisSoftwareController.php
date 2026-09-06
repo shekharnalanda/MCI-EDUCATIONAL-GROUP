@@ -16,7 +16,7 @@ class IrisSoftwareController extends Controller
     public function index()
     {
         $connector = $this->directory().
-            '/MCI-Biometric-Connector-Windows-x86.zip';
+            '/MCI-Universal-Biometric-Connector-V2-Windows-x86.zip';
 
         return view('admin.iris-software', [
             'connectorAvailable' => is_file($connector),
@@ -40,7 +40,7 @@ class IrisSoftwareController extends Controller
     ): BinaryFileResponse {
         $packages = [
             'connector' =>
-                'MCI-Biometric-Connector-Windows-x86.zip',
+                'MCI-Universal-Biometric-Connector-V2-Windows-x86.zip',
 
             'driver' =>
                 'Mantra-MIS100V2-Driver.zip',
