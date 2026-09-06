@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\BiometricActivationController;
+
 use App\Http\Controllers\Admin\BiometricDeviceController;
 
 use App\Http\Controllers\Admin\IrisSoftwareController;
@@ -21,6 +23,13 @@ use App\Http\Controllers\PublicSiteController;
 use Illuminate\Support\Facades\Route;
 
 
+
+Route::post(
+    '/api/v2/biometric/activate',
+    [BiometricActivationController::class,'activate']
+)->middleware('throttle:10,1')
+ ->name('api.biometric.activate');
+
 Route::middleware(['auth'])->prefix('admin')->group(function () {
 
     Route::get('/biometric-devices',
@@ -34,6 +43,10 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::post('/biometric-devices/{device}/regenerate-token',
         [BiometricDeviceController::class, 'regenerateToken'])
         ->name('admin.biometric-devices.token');
+
+    Route::post('/biometric-devices/{device}/activation-code',
+        [BiometricDeviceController::class, 'issueActivationCode'])
+        ->name('admin.biometric-devices.activation');
 
 
     Route::get('/iris-software',

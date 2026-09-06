@@ -127,3 +127,8 @@ Artisan::command('mci:monitor {--notify : Send an email only when a problem is d
 
     return $failed ? 1 : 0;
 })->purpose('Monitor Central Master health, communication delivery, sync failures and overdue follow-ups');
+
+
+Schedule::command('mci:sync-pathshala-biometric')
+    ->everyFiveMinutes()
+    ->withoutOverlapping();

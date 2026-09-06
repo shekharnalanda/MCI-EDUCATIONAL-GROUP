@@ -36,6 +36,21 @@
     </div>
 @endif
 
+
+@if(session('activation_code'))
+    <div class="bio-secret">
+        <strong>One-time Connector Activation</strong><br><br>
+        <strong>Device:</strong>
+        {{ session('activation_device') }}<br>
+        <strong>Activation Code:</strong>
+        {{ session('activation_code') }}<br><br>
+        <small>
+            Valid for 30 minutes. Use it once in the Connector.
+            Device Token will be provisioned automatically.
+        </small>
+    </div>
+@endif
+
 @if(session('new_device_token'))
     <div class="bio-secret">
         <strong>Copy this token now. It is shown only after regeneration.</strong>
@@ -93,7 +108,17 @@
             </button>
         </form>
 
+
         <form method="POST"
+              action="{{ route('admin.biometric-devices.activation',$device) }}"
+              style="display:inline">
+            @csrf
+            <button class="bio-btn bio-token">
+                Activate Connector
+            </button>
+        </form>
+
+<form method="POST"
               action="{{ route('admin.biometric-devices.token',$device) }}"
               style="display:inline"
               onsubmit="return confirm('Regenerate this Device Token? Existing connector configuration will stop authenticating until updated.')">

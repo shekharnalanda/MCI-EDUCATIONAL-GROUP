@@ -72,4 +72,46 @@ class BiometricDeviceController extends Controller
                 $device->device_code
             );
     }
+
+
+    public function issueActivationCode(
+        \App\Models\AttendanceDevice $device
+    ) {
+        abort_unless(
+            auth()->user()?->isMasterAdmin(),
+            403
+        );
+
+        $code = strtoupper(
+            substr(bin2hex(random_bytes(6)),0,10)
+        );
+
+        $device->activation_code_hash =
+            hash('sha256',$code);
+
+        $device->activation_expires_at =
+            now()->addMinutes(30);
+
+        /*
+         * Reissuing activation explicitly permits
+         * installation on a replacement/new PC.
+         */
+        $device->installation_id = null;
+        $device->activated_at = null;
+        $device->save();
+
+        return back()
+            ->with(
+                'success',
+                'One-time activation code generated.'
+            )
+            ->with(
+                'activation_code',
+                $code
+            )
+            ->with(
+                'activation_device',
+                $device->device_code
+            );
+    }
 }
