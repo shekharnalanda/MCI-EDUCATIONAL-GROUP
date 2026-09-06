@@ -1,0 +1,4 @@
+  POST      api/v1/iris/attendance ............................... api.v1.iris.attendance.store › Api\IrisAttendanceController@mark
+  POST      api/v1/iris/enrollments ........................... api.v1.iris.enrollments.store › Api\IrisAttendanceController@enroll
+  POST      api/v1/iris/heartbeat .................................. api.v1.iris.heartbeat › Api\IrisAttendanceController@heartbeat
+  GET|HEAD  api/v1/iris/roster ........................................... api.v1.iris.roster › Api\IrisAttendanceController@roster
