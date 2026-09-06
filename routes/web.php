@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\BiometricDeviceController;
+
 use App\Http\Controllers\Admin\IrisSoftwareController;
 
 use App\Http\Controllers\Admin\AuditLogController;
@@ -20,6 +22,20 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::middleware(['auth'])->prefix('admin')->group(function () {
+
+    Route::get('/biometric-devices',
+        [BiometricDeviceController::class, 'index'])
+        ->name('admin.biometric-devices.index');
+
+    Route::post('/biometric-devices/{device}/toggle',
+        [BiometricDeviceController::class, 'toggle'])
+        ->name('admin.biometric-devices.toggle');
+
+    Route::post('/biometric-devices/{device}/regenerate-token',
+        [BiometricDeviceController::class, 'regenerateToken'])
+        ->name('admin.biometric-devices.token');
+
+
     Route::get('/iris-software',
         [IrisSoftwareController::class, 'index'])
         ->name('admin.iris-software');

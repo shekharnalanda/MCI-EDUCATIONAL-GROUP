@@ -26,6 +26,11 @@
    href="{{ route('admin.iris-software') }}">
     Iris Software
 </a>
+
+        <a class="{{ request()->routeIs('admin.biometric-devices.*')?'active':'' }}"
+           href="{{ route('admin.biometric-devices.index') }}">
+            Biometric Devices
+        </a>
         @if(auth()->user()?->isMasterAdmin())
             <a class="{{ request()->routeIs('admin.auto-replies.*')?'active':'' }}" href="{{ route('admin.auto-replies.index') }}">Auto Reply Center</a>
             <a class="{{ request()->routeIs('admin.institutions.*')?'active':'' }}" href="{{ route('admin.institutions.index') }}">Business Units</a>
