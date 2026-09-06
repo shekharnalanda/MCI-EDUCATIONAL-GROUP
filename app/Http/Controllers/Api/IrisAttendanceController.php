@@ -62,7 +62,7 @@ class IrisAttendanceController extends Controller
         $data = $request->validate([
             'student_id' => ['required','integer'],
             'eye' => ['required','in:left,right,both,unknown'],
-            'template' => ['required','string','max:262144'],
+            'template' => ['required','string','max:2097152'],
             'quality_score' => ['nullable','numeric','min:0'],
             'sdk_version' => ['nullable','string','max:80'],
         ]);
