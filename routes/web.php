@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\IrisSoftwareController;
+
 use App\Http\Controllers\Admin\AuditLogController;
 use App\Http\Controllers\Admin\AttendanceController;
 use App\Http\Controllers\Admin\AuthController;
@@ -15,6 +17,18 @@ use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\PublicSiteController;
 use Illuminate\Support\Facades\Route;
+
+
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+    Route::get('/iris-software',
+        [IrisSoftwareController::class, 'index'])
+        ->name('admin.iris-software');
+
+    Route::get('/iris-software/download/{package}',
+        [IrisSoftwareController::class, 'download'])
+        ->whereIn('package', ['connector','driver','runtime'])
+        ->name('admin.iris-software.download');
+});
 
 Route::get('/', [PublicSiteController::class, 'home'])->name('home');
 Route::view('/about', 'about')->name('about');

@@ -18,3 +18,10 @@
 <div class="row g-4">@foreach([['Central Enquiries',$enquiryCount,'admin.enquiries.index'],['Admissions',$admissionCount,'admin.admissions.index'],['Customers','—','admin.customers.index'],['Communication History','—','admin.communications.index'],['Follow-ups',$followUpDueCount,'admin.follow-ups.index'],['Reports','—','admin.reports.index']] as [$label,$count,$route])<div class="col-sm-6 col-xl-4"><div class="card p-4 h-100"><div class="text-muted small text-uppercase fw-semibold">{{ $label }}</div><div class="display-5 fw-bold my-2">{{ $count }}</div><a href="{{ route($route) }}" class="text-decoration-none">Manage {{ $label }} →</a></div></div>@endforeach
 @if(auth()->user()?->isMasterAdmin())@foreach([['Institutions / Businesses',$institutionCount,'admin.institutions.index'],['News & Events',$newsCount,'admin.news.index'],['Gallery',$galleryCount,'admin.gallery.index'],['Downloads',$downloadCount,'admin.downloads.index']] as [$label,$count,$route])<div class="col-sm-6 col-xl-4"><div class="card p-4 h-100"><div class="text-muted small text-uppercase fw-semibold">{{ $label }}</div><div class="display-5 fw-bold my-2">{{ $count }}</div><a href="{{ route($route) }}" class="text-decoration-none">Manage {{ $label }} →</a></div></div>@endforeach @endif</div>
 @endsection
+
+
+<a href="{{ route('admin.iris-software') }}"
+   style="display:block;padding:10px 14px;margin:4px 0;
+          border-radius:8px;text-decoration:none;">
+    ◉ Iris Software
+</a>
