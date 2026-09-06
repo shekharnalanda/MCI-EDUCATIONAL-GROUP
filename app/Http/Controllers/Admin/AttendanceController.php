@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AttendanceBranch;
 use App\Models\AttendanceDevice;
 use App\Models\AttendanceRecord;
 use App\Models\AttendanceStudent;
@@ -20,15 +21,44 @@ class AttendanceController extends Controller
     {
         [$from, $to] = $this->dateRange($request);
         $records = $this->filteredRecords($request, $scope, $from, $to);
-        $students = $scope->applyInstitutionScope(AttendanceStudent::with(['institution', 'irisTemplates']), $request->user())
+        $students = $scope->applyInstitutionScope(AttendanceStudent::with(['institution', 'branch', 'irisTemplates']), $request->user())
             ->orderBy('name')->paginate(20, ['*'], 'students_page')->withQueryString();
-        $devices = $scope->applyInstitutionScope(AttendanceDevice::with('institution'), $request->user())
+        $devices = $scope->applyInstitutionScope(AttendanceDevice::with(['institution', 'branch']), $request->user())
             ->orderBy('name')->get();
 
         $today = $scope->applyInstitutionScope(AttendanceRecord::query(), $request->user())
             ->whereDate('attendance_date', today());
 
+        $institutions = $scope->applyInstitutionScope(
+            Institution::query(),
+            $request->user()
+        )->where('is_active', true)->orderBy('name')->get();
+
+        $branches = $scope->applyInstitutionScope(
+            AttendanceBranch::with('institution'),
+            $request->user()
+        )->orderBy('institution_id')->orderBy('name')->get();
+
+        $openAttendance = $scope->applyInstitutionScope(
+            AttendanceRecord::with([
+                'institution',
+                'branch',
+                'student',
+                'device',
+            ]),
+            $request->user()
+        )
+            ->where('status', 'present')
+            ->whereNotNull('checked_in_at')
+            ->whereNull('checked_out_at')
+            ->latest('checked_in_at')
+            ->limit(50)
+            ->get();
+
         return view('admin.attendance.index', [
+            'institutions' => $institutions,
+            'branches' => $branches,
+            'openAttendance' => $openAttendance,
             'records' => $records->latest('captured_at')->paginate(30)->withQueryString(),
             'students' => $students,
             'devices' => $devices,
@@ -68,10 +98,24 @@ class AttendanceController extends Controller
         $data = $request->validate([
             'institution_id' => ['required','exists:institutions,id'],
             'name' => ['required','string','max:150'],
+            'attendance_branch_id' => ['nullable','integer','exists:attendance_branches,id'],
             'device_code' => ['nullable','alpha_dash','max:80','unique:attendance_devices,device_code'],
             'serial_number' => ['nullable','string','max:120'],
             'location' => ['nullable','string','max:255'],
         ]);
+        if (! empty($data['attendance_branch_id'])) {
+            $validBranch = AttendanceBranch::query()
+                ->whereKey($data['attendance_branch_id'])
+                ->where('institution_id', $data['institution_id'])
+                ->exists();
+
+            abort_unless(
+                $validBranch,
+                422,
+                'Device branch does not belong to selected institution.'
+            );
+        }
+
         $plainToken = 'mci_iris_'.Str::random(48);
         $device = AttendanceDevice::create($data + [
             'device_code' => $data['device_code'] ?: 'iris-'.Str::lower(Str::random(12)),
@@ -164,11 +208,119 @@ class AttendanceController extends Controller
         return [$from, $to];
     }
 
+    public function storeBranch(
+        Request $request,
+        AdminAccessScope $scope,
+        AuditLogger $audit
+    ) {
+        $data = $request->validate([
+            'institution_id' => [
+                'required',
+                'integer',
+                'exists:institutions,id',
+            ],
+            'name' => ['required', 'string', 'max:150'],
+            'code' => ['required', 'alpha_dash', 'max:80'],
+            'address' => ['nullable', 'string', 'max:255'],
+            'is_active' => ['nullable', 'boolean'],
+        ]);
+
+        $scope->authorizeInstitution(
+            $request->user(),
+            (int) $data['institution_id']
+        );
+
+        $exists = AttendanceBranch::query()
+            ->where('institution_id', $data['institution_id'])
+            ->where('code', $data['code'])
+            ->exists();
+
+        abort_if($exists, 422, 'Branch code already exists.');
+
+        $branch = AttendanceBranch::create([
+            'institution_id' => $data['institution_id'],
+            'name' => $data['name'],
+            'code' => $data['code'],
+            'address' => $data['address'] ?? null,
+            'is_active' => $request->boolean('is_active', true),
+        ]);
+
+        $audit->record(
+            'attendance.branch.created',
+            $branch,
+            [],
+            $branch->only([
+                'institution_id',
+                'name',
+                'code',
+                'is_active',
+            ])
+        );
+
+        return back()->with(
+            'success',
+            'Attendance branch created successfully.'
+        );
+    }
+
+    public function updateBranch(
+        Request $request,
+        AttendanceBranch $branch,
+        AdminAccessScope $scope,
+        AuditLogger $audit
+    ) {
+        $scope->authorizeInstitution(
+            $request->user(),
+            (int) $branch->institution_id
+        );
+
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:150'],
+            'code' => ['required', 'alpha_dash', 'max:80'],
+            'address' => ['nullable', 'string', 'max:255'],
+            'is_active' => ['nullable', 'boolean'],
+        ]);
+
+        $duplicate = AttendanceBranch::query()
+            ->where('institution_id', $branch->institution_id)
+            ->where('code', $data['code'])
+            ->whereKeyNot($branch->id)
+            ->exists();
+
+        abort_if($duplicate, 422, 'Branch code already exists.');
+
+        $old = $branch->only([
+            'name',
+            'code',
+            'address',
+            'is_active',
+        ]);
+
+        $branch->update([
+            'name' => $data['name'],
+            'code' => $data['code'],
+            'address' => $data['address'] ?? null,
+            'is_active' => $request->boolean('is_active'),
+        ]);
+
+        $audit->record(
+            'attendance.branch.updated',
+            $branch,
+            $old,
+            $branch->only(array_keys($old))
+        );
+
+        return back()->with('success', 'Branch updated.');
+    }
+
     private function studentData(Request $request, ?AttendanceStudent $student = null): array
     {
-        return $request->validate([
+        $data = $request->validate([
             'institution_id' => ['required','exists:institutions,id'],
+            'attendance_branch_id' => ['nullable','integer','exists:attendance_branches,id'],
+            'person_type' => ['required','in:student,teacher,staff,administrator'],
             'admission_number' => ['nullable','string','max:100','unique:attendance_students,admission_number,'.($student?->id ?? 'NULL').',id,institution_id,'.$request->input('institution_id')],
+            'employee_number' => ['nullable','string','max:100'],
             'roll_number' => ['nullable','string','max:100'],
             'name' => ['required','string','max:150'],
             'course_class' => ['nullable','string','max:150'],
@@ -177,5 +329,20 @@ class AttendanceController extends Controller
             'mobile' => ['nullable','string','max:30'],
             'status' => ['required','in:active,inactive,completed'],
         ]);
+
+        if (! empty($data['attendance_branch_id'])) {
+            $validBranch = AttendanceBranch::query()
+                ->whereKey($data['attendance_branch_id'])
+                ->where('institution_id', $data['institution_id'])
+                ->exists();
+
+            abort_unless(
+                $validBranch,
+                422,
+                'Selected branch does not belong to this institution.'
+            );
+        }
+
+        return $data;
     }
 }
