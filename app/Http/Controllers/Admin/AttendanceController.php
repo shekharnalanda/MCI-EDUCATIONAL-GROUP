@@ -208,6 +208,267 @@ class AttendanceController extends Controller
         return [$from, $to];
     }
 
+    private function centralReportQuery(
+        Request $request,
+        AdminAccessScope $scope
+    ) {
+        $query = AttendanceRecord::query()
+            ->with([
+                'institution',
+                'branch',
+                'student',
+                'device',
+            ]);
+
+        $query = $scope->applyInstitutionScope(
+            $query,
+            $request->user()
+        );
+
+        if ($request->filled('institution_id')) {
+            $query->where(
+                'institution_id',
+                $request->integer('institution_id')
+            );
+        }
+
+        if ($request->filled('branch_id')) {
+            $query->where(
+                'attendance_branch_id',
+                $request->integer('branch_id')
+            );
+        }
+
+        if ($request->filled('person_type')) {
+            $type = $request->string('person_type')->toString();
+
+            $query->whereHas(
+                'student',
+                fn ($q) => $q->where('person_type', $type)
+            );
+        }
+
+        if ($request->filled('person_id')) {
+            $query->where(
+                'attendance_student_id',
+                $request->integer('person_id')
+            );
+        }
+
+        if ($request->filled('status')) {
+            $query->where(
+                'status',
+                $request->string('status')->toString()
+            );
+        }
+
+        if ($request->filled('checkout_source')) {
+            $query->where(
+                'checkout_source',
+                $request->string('checkout_source')->toString()
+            );
+        }
+
+        if ($request->filled('date_from')) {
+            $query->whereDate(
+                'attendance_date',
+                '>=',
+                $request->date('date_from')
+            );
+        }
+
+        if ($request->filled('date_to')) {
+            $query->whereDate(
+                'attendance_date',
+                '<=',
+                $request->date('date_to')
+            );
+        }
+
+        return $query;
+    }
+
+    public function centralReport(
+        Request $request,
+        AdminAccessScope $scope
+    ) {
+        $query = $this->centralReportQuery($request, $scope);
+
+        $summaryQuery = clone $query;
+
+        $summary = [
+            'records' => (clone $summaryQuery)->count(),
+            'open' => (clone $summaryQuery)
+                ->where('status', 'present')
+                ->whereNull('checked_out_at')
+                ->count(),
+            'completed' => (clone $summaryQuery)
+                ->where('status', 'completed')
+                ->count(),
+            'auto_checkout' => (clone $summaryQuery)
+                ->where('checkout_source', 'system_auto')
+                ->count(),
+            'minutes' => (int) (clone $summaryQuery)
+                ->sum('minutes_completed'),
+        ];
+
+        $records = $query
+            ->latest('attendance_date')
+            ->latest('checked_in_at')
+            ->paginate(100)
+            ->withQueryString();
+
+        $institutions = $scope->applyInstitutionScope(
+            Institution::query(),
+            $request->user()
+        )
+            ->where('is_active', true)
+            ->orderBy('name')
+            ->get();
+
+        $branches = $scope->applyInstitutionScope(
+            AttendanceBranch::with('institution'),
+            $request->user()
+        )
+            ->orderBy('institution_id')
+            ->orderBy('name')
+            ->get();
+
+        $people = $scope->applyInstitutionScope(
+            AttendanceStudent::with([
+                'institution',
+                'branch',
+            ]),
+            $request->user()
+        )
+            ->where('status', 'active')
+            ->orderBy('name')
+            ->get();
+
+        return view(
+            'admin.attendance.report',
+            compact(
+                'records',
+                'summary',
+                'institutions',
+                'branches',
+                'people'
+            )
+        );
+    }
+
+    public function exportCentralCsv(
+        Request $request,
+        AdminAccessScope $scope
+    ) {
+        $records = $this
+            ->centralReportQuery($request, $scope)
+            ->latest('attendance_date')
+            ->latest('checked_in_at')
+            ->get();
+
+        $filename =
+            'mci-central-attendance-'.
+            now()->format('Ymd-His').
+            '.csv';
+
+        return response()->streamDownload(
+            function () use ($records): void {
+                $out = fopen('php://output', 'w');
+
+                fwrite($out, "\xEF\xBB\xBF");
+
+                fputcsv($out, [
+                    'Date',
+                    'Institution',
+                    'Branch',
+                    'Person Type',
+                    'Name',
+                    'Admission/Employee/Roll',
+                    'Device',
+                    'Mark-In',
+                    'Mark-Out',
+                    'Mark-Out Source',
+                    'Minutes',
+                    'Status',
+                ]);
+
+                foreach ($records as $record) {
+                    $person = $record->student;
+
+                    fputcsv($out, [
+                        $record->attendance_date?->format('Y-m-d'),
+                        $record->institution?->name,
+                        $record->branch?->name
+                            ?: 'Main / Unassigned',
+                        ucfirst(
+                            $person?->person_type ?: 'student'
+                        ),
+                        $person?->name,
+                        $person?->admission_number
+                            ?: $person?->employee_number
+                            ?: $person?->roll_number,
+                        $record->device?->name,
+                        $record->checked_in_at?->format(
+                            'Y-m-d H:i:s'
+                        ),
+                        $record->checked_out_at?->format(
+                            'Y-m-d H:i:s'
+                        ),
+                        $record->checkout_source,
+                        $record->minutes_completed,
+                        $record->status,
+                    ]);
+                }
+
+                fclose($out);
+            },
+            $filename,
+            [
+                'Content-Type' =>
+                    'text/csv; charset=UTF-8',
+            ]
+        );
+    }
+
+    public function printCentralReport(
+        Request $request,
+        AdminAccessScope $scope
+    ) {
+        $query = $this->centralReportQuery(
+            $request,
+            $scope
+        );
+
+        $summaryQuery = clone $query;
+
+        $summary = [
+            'records' => (clone $summaryQuery)->count(),
+            'open' => (clone $summaryQuery)
+                ->where('status', 'present')
+                ->whereNull('checked_out_at')
+                ->count(),
+            'completed' => (clone $summaryQuery)
+                ->where('status', 'completed')
+                ->count(),
+            'auto_checkout' => (clone $summaryQuery)
+                ->where('checkout_source', 'system_auto')
+                ->count(),
+            'minutes' => (int) (clone $summaryQuery)
+                ->sum('minutes_completed'),
+        ];
+
+        $records = $query
+            ->latest('attendance_date')
+            ->latest('checked_in_at')
+            ->get();
+
+        return view(
+            'admin.attendance.print',
+            compact('records', 'summary')
+        );
+    }
+
     public function storeBranch(
         Request $request,
         AdminAccessScope $scope,

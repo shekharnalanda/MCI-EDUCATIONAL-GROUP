@@ -61,6 +61,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
         Route::get('/attendance/export', [AttendanceController::class, 'export'])->name('attendance.export');
         Route::get('/attendance/print', [AttendanceController::class, 'print'])->name('attendance.print');
+        Route::get('/attendance/report', [AttendanceController::class, 'centralReport'])->name('attendance.report');
+        Route::get('/attendance/report/csv', [AttendanceController::class, 'exportCentralCsv'])->name('attendance.report.csv');
+        Route::get('/attendance/report/print', [AttendanceController::class, 'printCentralReport'])->name('attendance.report.print');
         Route::post('/attendance/branches', [AttendanceController::class, 'storeBranch'])->name('attendance.branches.store');
         Route::put('/attendance/branches/{branch}', [AttendanceController::class, 'updateBranch'])->name('attendance.branches.update');
         Route::post('/attendance/students', [AttendanceController::class, 'storeStudent'])->name('attendance.students.store');
