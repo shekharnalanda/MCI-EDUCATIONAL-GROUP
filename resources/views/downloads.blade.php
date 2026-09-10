@@ -3,20 +3,14 @@
 @section('title', 'Downloads | MCI Educational Group')
 
 @section('content')
-<section class="page-hero py-5 bg-light border-bottom">
-    <div class="container py-4">
-        <span class="badge bg-primary-subtle text-primary mb-3">Resources</span>
-        <h1 class="display-5 fw-bold">Downloads</h1>
-        <p class="lead text-secondary mb-0">Important forms, brochures, notices and learning resources published for students and visitors.</p>
-    </div>
-</section>
-<section class="py-5">
+<section class="v2-page-hero"><div class="container"><div class="v2-kicker">Resources &amp; Documents</div><h1>Downloads for students, institutions and visitors.</h1><p>Access important forms, brochures, notices and learning resources published by MCI Educational Group.</p></div></section>
+<div class="v2-breadcrumb"><div class="container"><a href="{{ route('home') }}">Home</a><span>/</span><span>Downloads</span></div></div>
+<section class="v2-section v2-soft">
     <div class="container">
         <div class="row g-4">
             @forelse($items as $item)
                 <div class="col-md-6">
-                    <div class="card h-100 border-0 shadow-sm rounded-4">
-                        <div class="card-body p-4 d-flex flex-column">
+                    <div class="v2-card"><div class="d-flex flex-column h-100">
                             <h2 class="h5 fw-bold">{{ $item->title }}</h2>
                             @if($item->description)<p class="text-secondary flex-grow-1">{{ $item->description }}</p>@endif
                             <div class="d-flex gap-2 flex-wrap mt-2">
