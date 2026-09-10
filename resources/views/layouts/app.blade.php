@@ -27,44 +27,57 @@
 .v2-page-hero{
  position:relative;
  overflow:hidden;
- padding:90px 0 86px;
- color:#fff;
+ min-height:430px;
+ padding:82px 0 76px;
+ color:#102f52;
  background:
- linear-gradient(100deg,rgba(4,24,44,.97),rgba(7,55,91,.90)),
+ linear-gradient(90deg,rgba(247,252,255,.98) 0%,rgba(239,248,255,.95) 48%,rgba(226,243,255,.72) 100%),
  url('/images/mci-v2-campus-hero.webp') center/cover no-repeat;
 }
 .v2-page-hero .container{position:relative;z-index:2}
+.v2-page-hero:before{
+ content:"";
+ position:absolute;
+ inset:0;
+ background:radial-gradient(circle at 77% 48%,rgba(13,110,253,.13),transparent 33%);
+ pointer-events:none;
+}
 .v2-page-hero:after{
  content:"";
  position:absolute;
- width:380px;height:380px;
- border:1px solid rgba(255,255,255,.12);
+ width:390px;height:390px;
+ border:1px solid rgba(13,79,163,.12);
  border-radius:50%;
  right:-120px;top:-150px;
 }
 .v2-kicker{
- color:#f2d58e;
+ color:#426786;
  font-size:.75rem;
  font-weight:900;
  text-transform:uppercase;
  letter-spacing:.14em;
 }
+.v2-kicker:before{content:"";display:inline-block;width:28px;height:3px;margin:0 10px 3px 0;border-radius:5px;background:#1682ef}
 .v2-page-hero h1{
- max-width:850px;
- margin-top:10px;
- font-size:clamp(2.6rem,5vw,4.5rem);
+ max-width:800px;
+ margin-top:16px;
+ color:#0e3158;
+ font-size:clamp(2.5rem,5vw,4.75rem);
  font-weight:900;
- line-height:1.03;
+ line-height:1.01;
+ letter-spacing:-.035em;
 }
 .v2-page-hero p{
- max-width:760px;
+ max-width:680px;
  margin-top:20px;
- color:#d8e5ef;
+ color:#405b73;
  font-size:1.08rem;
+ line-height:1.65;
 }
 .v2-breadcrumb{
  border-bottom:1px solid #e2e9ef;
  background:#fff;
+ box-shadow:0 8px 24px rgba(24,72,116,.05);
 }
 .v2-breadcrumb .container{
  min-height:52px;
@@ -75,8 +88,8 @@
  font-size:.86rem;
 }
 .v2-breadcrumb a{font-weight:700}
-.v2-section{padding:82px 0}
-.v2-soft{background:#f4f7fa}
+.v2-section{padding:78px 0}
+.v2-soft{background:linear-gradient(180deg,#f8fbfe,#f2f7fb)}
 .v2-section-kicker{
  color:#12864c;
  font-size:.75rem;
@@ -99,7 +112,8 @@
  padding:28px;
  background:#fff;
  border:1px solid #e2e9ef;
- border-radius:12px;
+ border-radius:16px;
+ box-shadow:0 8px 24px rgba(24,72,116,.05);
  transition:.22s ease;
 }
 .v2-card:hover{
@@ -127,7 +141,8 @@
  background:linear-gradient(115deg,#0866b0,#12864c);
 }
 @media(max-width:575.98px){
- .v2-page-hero{padding:58px 0}
+ .v2-page-hero{min-height:auto;padding:58px 0 54px}
+ .v2-page-hero h1{font-size:clamp(2.25rem,12vw,3.25rem)}
  .v2-section{padding:62px 0}
  .v2-trust{padding:27px 23px}
 }
