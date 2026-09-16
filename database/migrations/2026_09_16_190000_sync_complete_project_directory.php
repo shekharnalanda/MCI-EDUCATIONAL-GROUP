@@ -9,7 +9,7 @@ return new class extends Migration {
         $projects = [
             ['MCI Educational Group', 'mci-educational-group', 'https://mciedu.in', 'Official umbrella portal for education, skills, technology and group services.', '/images/mci-logo.png'],
             ['MCI Search Engine', 'mci-search-engine', 'https://esearch.mciedu.com', 'Local business and service search platform for nearby verified listings.'],
-            ['MCI Test Series', 'mci-test-series', 'https://test.mciedu.com', 'Bilingual online tests, practice, results and competitive-exam preparation.'],
+            ['MCI Test Series', 'mci-test-series', 'https://test.mciedu.com', 'Bilingual online tests, practice, results and competitive-exam preparation.', null, ['mci-test-serise']],
             ['C-Net Meet', 'c-net-meet', 'https://meet.mciedu.com', 'Self-hosted online meeting, classroom and collaboration platform.', null, ['c-net-audio-meet']],
             ['C-Net Social Media', 'c-net-social-media', 'https://social.mciedu.com', 'Private social network for the MCI community, institutions and learners.'],
             ['C-Net AI Studio', 'c-net-ai-studio', 'https://studio.mciedu.com', 'AI-powered creative tools, automation and digital production workspace.'],
