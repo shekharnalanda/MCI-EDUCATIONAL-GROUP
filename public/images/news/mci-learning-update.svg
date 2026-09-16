@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">MCI learning and skill update</title><desc id="desc">Branded education visual for MCI Test Series and KYP</desc>
+  <defs><linearGradient id="g" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#0b3765"/><stop offset="1" stop-color="#16a36d"/></linearGradient></defs>
+  <rect width="1200" height="630" fill="url(#g)"/><path d="M840 135h245v310H840z" fill="#fff" opacity=".12"/><path d="M885 195h155M885 255h155M885 315h110" stroke="#fff" stroke-width="18" stroke-linecap="round" opacity=".65"/><circle cx="1040" cy="450" r="82" fill="#f2a51a" opacity=".9"/>
+  <text x="75" y="105" fill="#bfe8d8" font-family="Arial,sans-serif" font-size="30" font-weight="700" letter-spacing="5">LEARNING &amp; SKILLS</text>
+  <text x="75" y="245" fill="#fff" font-family="Arial,sans-serif" font-size="68" font-weight="800">Practice. Learn.</text><text x="75" y="330" fill="#fff" font-family="Arial,sans-serif" font-size="68" font-weight="800">Build Your Future.</text>
+  <text x="75" y="425" fill="#eafff7" font-family="Arial,sans-serif" font-size="32">MCI Test Series • KYP • Computer Education</text>
+  <text x="75" y="500" fill="#fff" font-family="Arial,sans-serif" font-size="26">Bilingual learning, practical skills and career preparation</text>
+</svg>
