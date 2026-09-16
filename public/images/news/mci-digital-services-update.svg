@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">MCI digital services update</title><desc id="desc">Branded technology visual for MCI and C-Net digital platforms</desc>
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#121c45"/><stop offset=".55" stop-color="#5c3bd6"/><stop offset="1" stop-color="#1682ef"/></linearGradient></defs>
+  <rect width="1200" height="630" fill="url(#g)"/><g fill="none" stroke="#fff" opacity=".3" stroke-width="4"><circle cx="970" cy="315" r="175"/><circle cx="970" cy="315" r="110"/><path d="M795 315h350M970 140v350"/></g><g fill="#fff"><circle cx="970" cy="140" r="15"/><circle cx="1145" cy="315" r="15"/><circle cx="970" cy="490" r="15"/><circle cx="795" cy="315" r="15"/></g>
+  <text x="75" y="105" fill="#d9d0ff" font-family="Arial,sans-serif" font-size="30" font-weight="700" letter-spacing="5">DIGITAL SERVICES</text>
+  <text x="75" y="245" fill="#fff" font-family="Arial,sans-serif" font-size="68" font-weight="800">Smart Platforms.</text><text x="75" y="330" fill="#fff" font-family="Arial,sans-serif" font-size="68" font-weight="800">Practical Solutions.</text>
+  <text x="75" y="425" fill="#eff5ff" font-family="Arial,sans-serif" font-size="30">Search • Meet • Salary • Vyapar • AI • Web</text>
+  <rect x="75" y="480" width="370" height="62" rx="31" fill="#fff" opacity=".95"/><text x="260" y="521" text-anchor="middle" fill="#37248d" font-family="Arial,sans-serif" font-size="28" font-weight="700">Powered by C-Net</text>
+</svg>
