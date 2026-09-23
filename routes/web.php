@@ -60,7 +60,16 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
 });
 
 Route::get('/', [PublicSiteController::class, 'home'])->name('home');
-Route::view('/about', 'about')->name('about');
+Route::get('/about', function () {
+    $projects = json_decode(file_get_contents(resource_path('data/about-projects.json')), true, 512, JSON_THROW_ON_ERROR);
+    return view('about', compact('projects'));
+})->name('about');
+Route::get('/about/{slug}', function (string $slug) {
+    $projects = json_decode(file_get_contents(resource_path('data/about-projects.json')), true, 512, JSON_THROW_ON_ERROR);
+    $project = collect($projects)->firstWhere('slug', $slug);
+    abort_unless($project, 404);
+    return view('about-project', compact('project'));
+})->where('slug', '[a-z0-9-]+')->name('about.project');
 Route::get('/institutions', [PublicSiteController::class, 'institutions'])->name('institutions');
 Route::view('/programs', 'programs')->name('programs');
 Route::get('/news-events', [PublicSiteController::class, 'news'])->name('news-events');

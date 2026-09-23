@@ -147,6 +147,11 @@
  .v2-trust{padding:27px 23px}
 }
 
+.about-directory{max-height:650px;overflow-y:auto;overscroll-behavior:contain;display:grid;gap:12px;padding:4px 12px 12px 4px;scrollbar-color:#97b7d9 #eaf2fb}
+.about-directory-item{display:grid;grid-template-columns:54px minmax(0,1fr) 28px;align-items:center;gap:18px;background:#fff;border:1px solid #dce9f5;border-radius:18px;padding:19px;text-decoration:none;color:#193b5c;box-shadow:0 8px 26px rgba(8,44,80,.05);transition:transform .2s,box-shadow .2s}
+.about-directory-item:hover,.about-directory-item:focus-visible{transform:translateY(-2px);box-shadow:0 14px 30px rgba(8,44,80,.12);color:#0d4fa3}
+.about-directory-item small{display:block;text-transform:uppercase;letter-spacing:.1em;color:#527b9c;font-weight:800;font-size:.7rem}.about-directory-item strong{display:block;font-size:1.18rem;margin:3px 0}.about-directory-item span span{display:block;color:#536b80;line-height:1.45}.about-directory-icon{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;background:#e7f3ff;color:#0d4fa3;font-weight:900}.about-directory-arrow{font-size:1.5rem;color:#1c75bf}.about-detail-hero{min-height:340px}
+@media(max-width:575px){.about-directory{max-height:570px}.about-directory-item{grid-template-columns:42px minmax(0,1fr) 18px;gap:10px;padding:14px}.about-directory-icon{width:42px;height:42px}.about-directory-item strong{font-size:1rem}.about-directory-item span span{font-size:.87rem}}
 </style>@stack('styles')
 </head>
 <body>

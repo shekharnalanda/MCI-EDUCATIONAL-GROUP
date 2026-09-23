@@ -140,7 +140,7 @@ and responsible educational development.
 </div>
 
 <div class="col-lg-4 text-lg-end">
-<a href="{{ route('institutions') }}"
+<a href="#our-network"
 class="btn btn-light btn-lg fw-bold">
 Explore Our Institutions
 </a>
@@ -149,6 +149,23 @@ Explore Our Institutions
 </div>
 </div>
 
+</div>
+</section>
+
+<section class="v2-section v2-soft" id="our-network">
+<div class="container">
+<div class="v2-section-kicker">Explore the group</div>
+<h2 class="v2-title display-5 mt-2">एक समूह, कई सेवाएँ</h2>
+<p class="v2-copy mb-4">अपनी रुचि का संस्थान या सेवा चुनें। हर परिचय में उसका काम, मुख्य सुविधाएँ और उपलब्ध वेबसाइट का पता मिलेगा।</p>
+<div class="about-directory" aria-label="MCI group projects">
+@foreach($projects as $project)
+<a class="about-directory-item" href="{{ route('about.project', $project['slug']) }}">
+<span class="about-directory-icon" aria-hidden="true">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
+<span><small>{{ $project['category'] }}</small><strong>{{ $project['name'] }}</strong><span>{{ $project['summary'] }}</span></span>
+<span class="about-directory-arrow" aria-hidden="true">↗</span>
+</a>
+@endforeach
+</div>
 </div>
 </section>
 
