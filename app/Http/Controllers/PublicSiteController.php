@@ -10,6 +10,24 @@ use App\Models\Setting;
 
 class PublicSiteController extends Controller
 {
+    private function aboutProjects(): array
+    {
+        return json_decode(file_get_contents(resource_path('data/about-projects.json')), true, 512, JSON_THROW_ON_ERROR);
+    }
+
+    public function about()
+    {
+        return view('about', ['projects' => $this->aboutProjects()]);
+    }
+
+    public function aboutProject(string $slug)
+    {
+        $project = collect($this->aboutProjects())->firstWhere('slug', $slug);
+        abort_unless($project, 404);
+
+        return view('about-project', compact('project'));
+    }
+
     private function settings(): array
     {
         return Setting::query()->pluck('value', 'key')->all();
