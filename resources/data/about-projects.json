@@ -1,22 +1,262 @@
 [
-  {"slug":"micro-computer-institute","name":"Micro Computer Institute","category":"Education","url":"https://mciedu.com","summary":"Practical computer education, online learning and career guidance for students and job seekers.","services":["Computer and digital skills courses","Practical lab training and guided learning","Career-focused student support"]},
-  {"slug":"mci-search-engine","name":"MCI Search Engine","category":"Digital services","url":"https://esearch.mciedu.com","summary":"A local discovery platform helping people find nearby businesses and services, starting in Bihar Sharif and Nalanda.","services":["Local business discovery","Business profiles and listings","Location-based search"]},
-  {"slug":"mci-test-series","name":"MCI Test Series","category":"Education","url":"https://test.mciedu.com","summary":"Bilingual online practice for competitive examinations with tests, results and learner progress.","services":["Hindi and English practice tests","Exam and subject-wise preparation","Results and performance review"]},
-  {"slug":"c-net-meet","name":"C-Net Meet","category":"Technology","url":"https://meet.mciedu.com","summary":"A meeting and virtual-classroom platform for group communication and learning.","services":["Online meetings and classes","Host and participant controls","Invitation-based collaboration"]},
-  {"slug":"c-net-social-media","name":"C-Net Social Media","category":"Community","url":"https://social.mciedu.com","summary":"A private digital community connecting students, teachers, staff and institutions.","services":["Role-based community spaces","Institution and group updates","Member communication"]},
-  {"slug":"c-net-ai-studio","name":"C-Net AI Studio","category":"Creative technology","url":"https://studio.mciedu.com","summary":"A creative workspace for producing and refining digital media with AI-assisted tools.","services":["Image, video and audio creation","Creative editing workflows","Content tools for institutions and businesses"]},
-  {"slug":"c-net-web-services","name":"C-Net Web Services","category":"Business services","url":"https://web.mciedu.com","summary":"Website development and digital support for organisations seeking a professional online presence.","services":["Website design and development","Domain and hosting support","Digital business solutions"]},
-  {"slug":"c-net-store","name":"C-Net Store","category":"Commerce","url":"https://cnetstore.mciedu.com","summary":"A local marketplace connecting shoppers with shopping, grocery and food sellers in Bihar Sharif.","services":["Online shopping","Local grocery and food discovery","Seller and delivery workflows"]},
-  {"slug":"shekhar-family-portal","name":"Shekhar Family Portal","category":"Community","url":"https://family.mciedu.in","summary":"A family information and connection portal with public identity and private member spaces.","services":["Family information","Memories and shared updates","Private member connections"]},
-  {"slug":"c-net-library","name":"C-Net Library","category":"Education","url":"https://cnetlibrary.mciedu.com","summary":"A focused study environment with membership, seats and learning resources.","services":["Study spaces and flexible slots","Library membership","Books and digital resources"]},
-  {"slug":"c-net-pathshala","name":"C-Net Pathshala","category":"School education","url":"https://cnet.mciedu.in","summary":"Foundational school learning in a caring environment for young children and families.","services":["Early learning and classroom activities","Admissions and parent support","Age-appropriate digital learning"]},
-  {"slug":"c-net-computer-education","name":"C-Net Computer Education","category":"Education","url":"https://cnetcomputer.mciedu.com","summary":"Career-oriented computer education combining courses with hands-on practice.","services":["Computer courses","Practical lab skills","Guidance for learners and job seekers"]},
-  {"slug":"c-net-pagarbook","name":"C-Net PagarBOOK","category":"Business software","url":null,"summary":"An attendance and payroll product being prepared for staff and small organisations.","services":["Attendance records","Salary calculations","Workforce administration"]},
-  {"slug":"book-my-event","name":"Book My Event","category":"Events","url":"https://bookmyevent.mciedu.com","summary":"Event discovery and booking tools for organisers and attendees.","services":["Event pages and bookings","Digital tickets","Entry and gate-scanning tools"]},
-  {"slug":"kushal-youth-program","name":"Kushal Youth Program (KYP)","category":"Skills","url":"https://kyp.mciedu.com","summary":"Youth training in computer literacy, communication, soft skills and practical digital readiness.","services":["Computer and digital skills","Communication and soft skills","Structured sessions and assessment"]},
-  {"slug":"salary-book","name":"Salary Book","category":"Business software","url":"https://salarybook.mciedu.com","summary":"Staff attendance and salary record management for everyday operations.","services":["Attendance tracking","Salary sheets and payslips","Staff records"]},
-  {"slug":"c-net-vyapar","name":"C-Net Vyapar","category":"Business software","url":"https://vyapar.mciedu.in","summary":"An everyday business management suite for billing, inventory and accounts.","services":["Billing and invoicing","Inventory and accounting","Customer records"]},
-  {"slug":"aryans-dandiya-night","name":"Aryans Dandiya Night 2.0","category":"Event project","url":"https://dandiyanight.mciedu.in","summary":"An event-specific registration and access platform developed for Aryans News.","services":["Registration and QR tickets","Slot-based event entry","Wristband and guest-pass workflows"]},
-  {"slug":"mci-c-net-network","name":"MCI-C-Net Network","category":"Media and learning","url":null,"summary":"A digital video and learning channel for MCI educational and service content. The public website address is awaiting verification.","services":["Educational video content","Course playlists","Group updates and outreach"]},
-  {"slug":"c-net-news","name":"C-Net News","category":"Media","url":null,"summary":"A digital newsroom project for curated headlines, editorial review and multimedia news presentation. The public website address is awaiting verification.","services":["News headlines and sections","Editorial moderation","Audio and live presentation planning"]}
+  {
+    "slug": "micro-computer-institute",
+    "name": "Micro Computer Institute",
+    "category": "Education",
+    "url": "https://mciedu.com",
+    "summary": "Practical computer education, online learning and career guidance for students and job seekers.",
+    "services": [
+      "Computer and digital skills courses",
+      "Practical lab training and guided learning",
+      "Career-focused student support"
+    ],
+    "hindi": "हम विद्यार्थियों को कंप्यूटर की व्यावहारिक शिक्षा, ऑनलाइन अध्ययन और करियर के लिए उपयोगी डिजिटल कौशल उपलब्ध कराते हैं।"
+  },
+  {
+    "slug": "mci-search-engine",
+    "name": "MCI Search Engine",
+    "category": "Digital services",
+    "url": "https://esearch.mciedu.com",
+    "summary": "A local discovery platform helping people find nearby businesses and services, starting in Bihar Sharif and Nalanda.",
+    "services": [
+      "Local business discovery",
+      "Business profiles and listings",
+      "Location-based search"
+    ],
+    "hindi": "हम स्थानीय दुकानों, व्यवसायों और सेवाओं को लोगों से जोड़ने के लिए आस-पास खोज का डिजिटल मंच विकसित कर रहे हैं।"
+  },
+  {
+    "slug": "mci-test-series",
+    "name": "MCI Test Series",
+    "category": "Education",
+    "url": "https://test.mciedu.com",
+    "summary": "Bilingual online practice for competitive examinations with tests, results and learner progress.",
+    "services": [
+      "Hindi and English practice tests",
+      "Exam and subject-wise preparation",
+      "Results and performance review"
+    ],
+    "hindi": "हम प्रतियोगी परीक्षाओं की तैयारी के लिए हिंदी और अंग्रेज़ी में अभ्यास टेस्ट, परिणाम और प्रगति की जानकारी देते हैं।"
+  },
+  {
+    "slug": "c-net-meet",
+    "name": "C-Net Meet",
+    "category": "Technology",
+    "url": "https://meet.mciedu.com",
+    "summary": "A meeting and virtual-classroom platform for group communication and learning.",
+    "services": [
+      "Online meetings and classes",
+      "Host and participant controls",
+      "Invitation-based collaboration"
+    ],
+    "hindi": "हम ऑनलाइन बैठक, कक्षा और समूह संवाद के लिए डिजिटल मंच तैयार करते हैं।"
+  },
+  {
+    "slug": "c-net-social-media",
+    "name": "C-Net Social Media",
+    "category": "Community",
+    "url": "https://social.mciedu.com",
+    "summary": "A private digital community connecting students, teachers, staff and institutions.",
+    "services": [
+      "Role-based community spaces",
+      "Institution and group updates",
+      "Member communication"
+    ],
+    "hindi": "हम विद्यार्थियों, शिक्षकों, कर्मचारियों और संस्थानों के लिए एक निजी समुदाय मंच विकसित करते हैं।"
+  },
+  {
+    "slug": "c-net-ai-studio",
+    "name": "C-Net AI Studio",
+    "category": "Creative technology",
+    "url": "https://studio.mciedu.com",
+    "summary": "A creative workspace for producing and refining digital media with AI-assisted tools.",
+    "services": [
+      "Image, video and audio creation",
+      "Creative editing workflows",
+      "Content tools for institutions and businesses"
+    ],
+    "hindi": "हम रचनात्मक काम के लिए चित्र, वीडियो और ऑडियो से जुड़े AI-सहायक उपकरण विकसित करते हैं।"
+  },
+  {
+    "slug": "c-net-web-services",
+    "name": "C-Net Web Services",
+    "category": "Business services",
+    "url": "https://web.mciedu.com",
+    "summary": "Website development and digital support for organisations seeking a professional online presence.",
+    "services": [
+      "Website design and development",
+      "Domain and hosting support",
+      "Digital business solutions"
+    ],
+    "hindi": "हम संस्थानों और व्यवसायों को वेबसाइट, डोमेन, होस्टिंग और डिजिटल उपस्थिति में सहयोग देते हैं।"
+  },
+  {
+    "slug": "c-net-store",
+    "name": "C-Net Store",
+    "category": "Commerce",
+    "url": "https://cnetstore.mciedu.com",
+    "summary": "A local marketplace connecting shoppers with shopping, grocery and food sellers in Bihar Sharif.",
+    "services": [
+      "Online shopping",
+      "Local grocery and food discovery",
+      "Seller and delivery workflows"
+    ],
+    "hindi": "हम बिहार शरीफ के ग्राहकों को स्थानीय दुकानों, किराना और भोजन विक्रेताओं से जोड़ने वाला मंच विकसित करते हैं।"
+  },
+  {
+    "slug": "shekhar-family-portal",
+    "name": "Shekhar Family Portal",
+    "category": "Community",
+    "url": "https://family.mciedu.in",
+    "summary": "A family information and connection portal with public identity and private member spaces.",
+    "services": [
+      "Family information",
+      "Memories and shared updates",
+      "Private member connections"
+    ],
+    "hindi": "यह परिवार की जानकारी, साझा यादों और सदस्यों के सुरक्षित डिजिटल संपर्क का मंच है।"
+  },
+  {
+    "slug": "c-net-library",
+    "name": "C-Net Library",
+    "category": "Education",
+    "url": "https://cnetlibrary.mciedu.com",
+    "summary": "A focused study environment with membership, seats and learning resources.",
+    "services": [
+      "Study spaces and flexible slots",
+      "Library membership",
+      "Books and digital resources"
+    ],
+    "hindi": "हम पाठकों और विद्यार्थियों को अध्ययन के लिए स्थान, सदस्यता और उपयोगी संसाधन उपलब्ध कराते हैं।"
+  },
+  {
+    "slug": "c-net-pathshala",
+    "name": "C-Net Pathshala",
+    "category": "School education",
+    "url": "https://cnet.mciedu.in",
+    "summary": "Foundational school learning in a caring environment for young children and families.",
+    "services": [
+      "Early learning and classroom activities",
+      "Admissions and parent support",
+      "Age-appropriate digital learning"
+    ],
+    "hindi": "हम बच्चों के लिए देखभाल के साथ प्रारंभिक शिक्षा और परिवारों को शैक्षणिक सहयोग देते हैं।"
+  },
+  {
+    "slug": "c-net-computer-education",
+    "name": "C-Net Computer Education",
+    "category": "Education",
+    "url": "https://cnetcomputer.mciedu.com",
+    "summary": "Career-oriented computer education combining courses with hands-on practice.",
+    "services": [
+      "Computer courses",
+      "Practical lab skills",
+      "Guidance for learners and job seekers"
+    ],
+    "hindi": "हम कंप्यूटर के रोजगार उपयोगी पाठ्यक्रम, प्रयोगशाला अभ्यास और सीखने का मार्गदर्शन देते हैं।"
+  },
+  {
+    "slug": "c-net-pagarbook",
+    "name": "C-Net PagarBOOK",
+    "category": "Business software",
+    "url": null,
+    "summary": "An attendance and payroll product being prepared for staff and small organisations.",
+    "services": [
+      "Attendance records",
+      "Salary calculations",
+      "Workforce administration"
+    ],
+    "hindi": "यह कर्मचारियों की उपस्थिति और वेतन रिकॉर्ड संभालने के लिए तैयार किया जा रहा उत्पाद है।"
+  },
+  {
+    "slug": "book-my-event",
+    "name": "Book My Event",
+    "category": "Events",
+    "url": "https://bookmyevent.mciedu.com",
+    "summary": "Event discovery and booking tools for organisers and attendees.",
+    "services": [
+      "Event pages and bookings",
+      "Digital tickets",
+      "Entry and gate-scanning tools"
+    ],
+    "hindi": "हम आयोजकों को कार्यक्रम पेज, बुकिंग, डिजिटल टिकट और प्रवेश प्रबंधन के उपकरण देते हैं।"
+  },
+  {
+    "slug": "kushal-youth-program",
+    "name": "Kushal Youth Program (KYP)",
+    "category": "Skills",
+    "url": "https://kyp.mciedu.com",
+    "summary": "Youth training in computer literacy, communication, soft skills and practical digital readiness.",
+    "services": [
+      "Computer and digital skills",
+      "Communication and soft skills",
+      "Structured sessions and assessment"
+    ],
+    "hindi": "हम युवाओं को कंप्यूटर ज्ञान, संवाद कौशल और व्यवहारिक डिजिटल प्रशिक्षण से आगे बढ़ने में मदद करते हैं।"
+  },
+  {
+    "slug": "salary-book",
+    "name": "Salary Book",
+    "category": "Business software",
+    "url": "https://salarybook.mciedu.com",
+    "summary": "Staff attendance and salary record management for everyday operations.",
+    "services": [
+      "Attendance tracking",
+      "Salary sheets and payslips",
+      "Staff records"
+    ],
+    "hindi": "यह कर्मचारियों की उपस्थिति, वेतन पत्रक और रिकॉर्ड प्रबंधन का मंच है।"
+  },
+  {
+    "slug": "c-net-vyapar",
+    "name": "C-Net Vyapar",
+    "category": "Business software",
+    "url": "https://vyapar.mciedu.in",
+    "summary": "An everyday business management suite for billing, inventory and accounts.",
+    "services": [
+      "Billing and invoicing",
+      "Inventory and accounting",
+      "Customer records"
+    ],
+    "hindi": "हम छोटे व्यवसायों के दैनिक बिल, स्टॉक, खातों और ग्राहक रिकॉर्ड को व्यवस्थित करने के उपकरण विकसित करते हैं।"
+  },
+  {
+    "slug": "aryans-dandiya-night",
+    "name": "Aryans Dandiya Night 2.0",
+    "category": "Client project",
+    "url": "https://dandiyanight.mciedu.in",
+    "summary": "An event-specific registration and access platform developed for Aryans News.",
+    "services": [
+      "Registration and QR tickets",
+      "Slot-based event entry",
+      "Wristband and guest-pass workflows"
+    ],
+    "hindi": "यह आर्यन्स न्यूज़ के कार्यक्रम के लिए बनाया गया ग्राहक प्रोजेक्ट है, जिसमें पंजीकरण और प्रवेश प्रबंधन शामिल हैं।"
+  },
+  {
+    "slug": "mci-c-net-network",
+    "name": "MCI-C-Net Network",
+    "category": "Media and learning",
+    "url": null,
+    "summary": "A digital video and learning channel for MCI educational and service content. The public website address is awaiting verification.",
+    "services": [
+      "Educational video content",
+      "Course playlists",
+      "Group updates and outreach"
+    ],
+    "hindi": "हम समूह की शिक्षा और सेवाओं से जुड़ी वीडियो सामग्री और पाठ्यक्रम प्लेलिस्ट का प्रसारण विकसित कर रहे हैं।"
+  },
+  {
+    "slug": "c-net-news",
+    "name": "C-Net News",
+    "category": "Media",
+    "url": null,
+    "summary": "A digital newsroom project for curated headlines, editorial review and multimedia news presentation. The public website address is awaiting verification.",
+    "services": [
+      "News headlines and sections",
+      "Editorial moderation",
+      "Audio and live presentation planning"
+    ],
+    "hindi": "हम समाचार शीर्षकों, संपादकीय समीक्षा और मल्टीमीडिया प्रस्तुति के लिए डिजिटल न्यूज़रूम विकसित कर रहे हैं।"
+  }
 ]
