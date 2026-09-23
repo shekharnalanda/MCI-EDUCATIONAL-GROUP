@@ -21,7 +21,7 @@ $wings = [
   <div class="container group-hero-inner">
     <div>
       <div class="group-eyebrow">ABOUT US · MCI EDUCATIONAL GROUP</div>
-      <h1>शिक्षा से डिजिटल अवसर तक,<br><em>एक साझा दृष्टि।</em></h1>
+      <h1>शिक्षा से डिजिटल अवसर तक, <em>एक साझा दृष्टि।</em></h1>
       <p>MCI Educational Group शिक्षा, कौशल, तकनीक और सेवा से जुड़ी पहलों का साझा परिचय है। प्रत्येक पहल का अपना काम और अपना मंच है; यहाँ आप समझ सकते हैं कि वे किसके लिए हैं और कैसे उपयोगी हैं।</p>
       <div class="group-trust-line">संचालित: <strong>Chandrashekhar &amp; Narayan Educational Trust</strong></div>
       <a class="group-primary-link" href="#our-work">हमारे कार्यक्षेत्र देखें <span aria-hidden="true">↓</span></a>
