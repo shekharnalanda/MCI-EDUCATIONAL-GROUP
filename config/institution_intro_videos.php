@@ -14,6 +14,8 @@ return [
     'C-Net Vyapar' => '2NbIIGmQjK0',
     'C-Net Store' => 'KkGYbLerqTA',
     'C-Net Social Media' => 'fnjattuFNRA',
+    'C-Net Library' => 'UIt0rhoK7m8',
+    'C-Net Computer Education' => 'gwlweNB8E8U',
     'C-Net Pathshala' => 'ALXihIGhErk',
     'C-Net PagarBOOK' => 'gUu2toNXj5o',
     'C-Net Meet' => 'Qm9ug-YddHg',
