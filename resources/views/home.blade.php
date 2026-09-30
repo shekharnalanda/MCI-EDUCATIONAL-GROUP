@@ -18,6 +18,7 @@
 .institution-track{display:flex;width:max-content;gap:12px;animation:institution-scroll 95s linear infinite;will-change:transform}.institution-set{display:flex;gap:12px}
 .institution-marquee:hover .institution-track,.institution-marquee:focus-within .institution-track{animation-play-state:paused}
 .institution-set .institution-card{flex:0 0 128px;width:128px;height:auto;min-height:194px}.institution-logo.is-broken{display:none}.institution-logo.is-broken+.institution-fallback{display:grid!important}
+.institution-website{display:block;color:inherit}.institution-video-link{display:block;margin-top:12px;padding:8px 3px;border-radius:7px;background:#eaf5ff;color:#0a4a8a;font-size:.72rem;font-weight:800;line-height:1.25}.institution-video-link:hover,.institution-video-link:focus{background:#0d6efd;color:#fff}
 @keyframes institution-scroll{from{transform:translateX(0)}to{transform:translateX(calc(-50% - 6px))}}
 @media(prefers-reduced-motion:reduce){.institution-marquee{overflow-x:auto;mask-image:none;-webkit-mask-image:none}.institution-track{animation:none}.institution-set[aria-hidden="true"]{display:none}}
 @media(max-width:768px){.institution-set .institution-card{flex-basis:122px;width:122px}.institution-track{animation-duration:115s}}
@@ -45,8 +46,10 @@
         $url = $institution->website_url ?? $institution->website ?? '#';
         $favicon = $url && $url !== '#' && str_starts_with($url, 'http') ? rtrim($url, '/').'/favicon.ico' : null;
         $initials = collect(preg_split('/[\s-]+/', $institution->name))->filter()->take(3)->map(fn ($word) => mb_substr($word, 0, 1))->implode('');
+        $introVideoId = config('institution_intro_videos')[$institution->name] ?? null;
     @endphp
-    <a class="institution-card" href="{{ $url ?: '#' }}" @if($url && $url !== '#') target="_blank" rel="noopener" @endif>
+    <div class="institution-card">
+    <a class="institution-website" href="{{ $url ?: '#' }}" @if($url && $url !== '#') target="_blank" rel="noopener" @endif>
         @if($logo || $favicon)
             <img class="institution-logo" src="{{ $logo ? (str_starts_with($logo, 'http') ? $logo : asset(ltrim($logo, '/'))) : $favicon }}" alt="{{ $institution->name }} official logo" loading="lazy" onerror="this.classList.add('is-broken')">
             <div class="institution-fallback" style="display:none">{{ $initials ?: 'MCI' }}</div>
@@ -56,6 +59,10 @@
         <h3>{{ $institution->name }}</h3>
         <p>{{ \Illuminate\Support\Str::limit($institution->description ?? 'Education, skills and digital learning services.', 70) }}</p>
     </a>
+    @if($introVideoId)
+        <a class="institution-video-link" href="https://www.youtube.com/watch?v={{ $introVideoId }}" target="_blank" rel="noopener" aria-label="{{ $institution->name }} का परिचय वीडियो देखें">परिचय वीडियो देखें ↗</a>
+    @endif
+    </div>
 @empty
     @foreach(['Micro Computer Institute','MCI Test Series','Kushal Youth Program','C-Net Pathshala','C-Net Library','C-Net Computer Education','C-Net Web Services','C-Net Store','C-Net AI Studio'] as $name)
         <div class="institution-card"><div class="institution-fallback">MCI</div><h3>{{ $name }}</h3><p>Part of the MCI Educational Group ecosystem.</p></div>
