@@ -64,6 +64,16 @@ $customer = Customer::firstOrNew(['mobile' => $data['phone']]);
             Log::warning('Enquiry email notification failed', ['enquiry_id' => $enquiry->id, 'error' => $e->getMessage()]);
         }
 
+        if ($enquiry->email) {
+            try {
+                Mail::raw('Thank you for contacting MCI Educational Group. We have received your enquiry and our team will get back to you soon.', function ($message) use ($enquiry) {
+                    $message->to($enquiry->email)->subject('MCI Educational Group - Enquiry Received');
+                });
+            } catch (\\Throwable $e) {
+                Log::warning('Enquiry confirmation email failed', ['enquiry_id' => $enquiry->id, 'error' => $e->getMessage()]);
+            }
+        }
+
         return back()->with('success', 'Thank you. Your enquiry has been submitted successfully.');
     }
 }
