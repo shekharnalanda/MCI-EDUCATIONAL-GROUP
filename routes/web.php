@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\OperationsController;
 use App\Http\Controllers\Admin\ReportsController;
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\EnquiryController;
+use App\Http\Controllers\EnquiryEmailOtpController;
 use App\Http\Controllers\PublicSiteController;
 use Illuminate\Support\Facades\Route;
 
@@ -69,6 +70,8 @@ Route::get('/gallery', [PublicSiteController::class, 'gallery'])->name('gallery'
 Route::get('/downloads', [PublicSiteController::class, 'downloads'])->name('downloads');
 Route::view('/career', 'career')->name('career');
 Route::view('/contact', 'contact')->name('contact');
+Route::post('/enquiry/email-otp', [EnquiryEmailOtpController::class, 'send'])->middleware('throttle:3,10')->name('enquiry.email-otp.send');
+Route::post('/enquiry/email-otp/verify', [EnquiryEmailOtpController::class, 'verify'])->middleware('throttle:6,10')->name('enquiry.email-otp.verify');
 Route::post('/enquiry', [EnquiryController::class, 'store'])->middleware('throttle:10,1')->name('enquiry.store');
 
 Route::prefix('admin')->name('admin.')->group(function () {
