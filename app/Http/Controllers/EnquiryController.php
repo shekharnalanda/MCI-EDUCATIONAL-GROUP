@@ -15,12 +15,20 @@ class EnquiryController extends Controller
         $data = $request->validate([
             'name' => ['required', 'string', 'max:120'],
             'phone' => ['required', 'string', 'max:30'],
-            'email' => ['nullable', 'email', 'max:150'],
+            'email' => ['required', 'email, 'max:150'],
             'subject' => ['nullable', 'string', 'max:180'],
             'message' => ['required', 'string', 'max:3000'],
         ]);
 
-        $customer = Customer::firstOrNew(['mobile' => $data['phone']]);
+        
+        $verified = $request->session()->get('enquiry_email_verified');
+        $email = strtolower(trim((string) ($data['email'] ?? '')));
+        if (!$verified || !hash_equals((string) ($verified['email'] ?? ''), $email) || now()->timestamp > (int) ($verified['expires_at'] ?? 0)) {
+            return back()->withInput()->withErrors(['email' => 'पहले इस email पर भेजा गया OTP verify करें।']);
+        }
+        $request->session()->forget('enquiry_email_verified');
+
+$customer = Customer::firstOrNew(['mobile' => $data['phone']]);
         $customer->name = $data['name'];
         if (!empty($data['email'])) $customer->email = $data['email'];
         $customer->last_activity_at = now();
