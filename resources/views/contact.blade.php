@@ -126,7 +126,7 @@ Your message will be available directly in the MCI Admin Panel.
 </div>
 
 <div class="col-12">
-<label class="form-label fw-bold" for="email">Email</label>
+<label class="form-label fw-bold" for="email">Email (OTP verification required)</label>
 <input
  id="email"
  type="email"
@@ -134,6 +134,7 @@ Your message will be available directly in the MCI Admin Panel.
  name="email"
  value="{{ old('email') }}"
  maxlength="150"
+ required
  autocomplete="email"
 >
 </div>
