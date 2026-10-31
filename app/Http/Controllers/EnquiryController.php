@@ -39,7 +39,7 @@ $customer = Customer::firstOrNew(['mobile' => $data['phone']]);
         $data['source_site'] = 'mciedu.in';
         $data['received_at'] = now();
         $data['sync_status'] = 'local';
-        $data['auto_reply_status'] = 'pending';
+        $data['auto_reply_status'] = 'disabled';
         $enquiry = Enquiry::create($data);
 
         try {
