@@ -43,7 +43,7 @@ $customer = Customer::firstOrNew(['mobile' => $data['phone']]);
         $enquiry = Enquiry::create($data);
 
         try {
-            $to = config('mail.from.address');
+            $to = config('enquiry.recipient');
             if ($to) {
                 $subject = 'New website enquiry: '.($enquiry->subject ?: $enquiry->name);
                 $body = implode("\n", [
