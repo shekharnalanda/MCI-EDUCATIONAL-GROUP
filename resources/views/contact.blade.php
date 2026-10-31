@@ -72,14 +72,14 @@ Your enquiry can be directed to the relevant institution or service within the M
 
 <div class="v2-card">
 
-<div class="v2-section-kicker">Central Enquiry</div>
+<div class="v2-section-kicker">Contact &amp; Enquiry</div>
 
 <h2 class="v2-title h3 mt-2">
 Send an Enquiry
 </h2>
 
 <p class="v2-copy">
-Your message will be available directly in the MCI Admin Panel.
+Your message will be routed to the dedicated MCI Educational Group inbox.
 </p>
 
 @if(session('success'))
