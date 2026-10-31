@@ -72,14 +72,14 @@ Your enquiry can be directed to the relevant institution or service within the M
 
 <div class="v2-card">
 
-<div class="v2-section-kicker">Central Enquiry</div>
+<div class="v2-section-kicker">Contact &amp; Enquiry</div>
 
 <h2 class="v2-title h3 mt-2">
 Send an Enquiry
 </h2>
 
 <p class="v2-copy">
-Your message will be available directly in the MCI Admin Panel.
+Your message will be routed to the dedicated MCI Educational Group inbox.
 </p>
 
 @if(session('success'))
@@ -126,7 +126,7 @@ Your message will be available directly in the MCI Admin Panel.
 </div>
 
 <div class="col-12">
-<label class="form-label fw-bold" for="email">Email</label>
+<label class="form-label fw-bold" for="email">Email (OTP verification required)</label>
 <input
  id="email"
  type="email"
@@ -134,8 +134,17 @@ Your message will be available directly in the MCI Admin Panel.
  name="email"
  value="{{ old('email') }}"
  maxlength="150"
+ required
  autocomplete="email"
 >
+<div class="email-otp-step">
+<button type="submit" formmethod="POST" formaction="{{ route('enquiry.email-otp.send') }}" formnovalidate>Send email OTP</button>
+<label for="enquiry-otp">Email OTP</label>
+<input id="enquiry-otp" type="text" name="otp" inputmode="numeric" autocomplete="one-time-code" maxlength="6" value="{{ old('otp') }}">
+<button type="submit" formmethod="POST" formaction="{{ route('enquiry.email-otp.verify') }}" formnovalidate>Verify OTP</button>
+@if(session('otp_sent'))<p role="status">{{ session('otp_sent') }}</p>@endif
+@if(session('otp_verified'))<p role="status">{{ session('otp_verified') }}</p>@endif
+</div>
 </div>
 
 <div class="col-12">
